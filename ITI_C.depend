@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1761656392 source:d:\projects\coding\codeblocks\iti_c\main.cpp
+	<iostream>
+	<string>
+	<cctype>
+	"Days/Day3.h"
+
+1761656672 d:\projects\coding\codeblocks\iti_c\days\day3.h
+	<iostream>
+	<string>
+
