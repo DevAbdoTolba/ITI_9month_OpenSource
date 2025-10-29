@@ -160,7 +160,7 @@ void task1(){
 
 
  void sortArray(int arr[], int arr_size){
-     int* sorted_arr = (int*)calloc(arr_size, sizeof(int) );
+     int* sorted_arr = new int[arr_size];
 
      for(int i = 0; i < arr_size; i++){
         sorted_arr[i] = arr[i];
@@ -185,7 +185,7 @@ void task1(){
 
 
  int* squareArray(int arr[], int arr_size){
-    int* squared_res = (int*)calloc(arr_size, sizeof(int) );
+    int* squared_res = new int[arr_size];
     for(int i = 0; i < arr_size; i++){
         squared_res[i] = arr[i]*2;
     }
