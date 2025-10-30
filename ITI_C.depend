@@ -1,11 +1,91 @@
 # depslib dependency file v1.0
-1761656392 source:d:\projects\coding\codeblocks\iti_c\main.cpp
+1761828885 source:d:\projects\coding\codeblocks\iti_c\main.cpp
 	<iostream>
 	<string>
 	<cctype>
-	"Days/Day3.h"
+	"Days/Day4.h"
 
-1761656672 d:\projects\coding\codeblocks\iti_c\days\day3.h
+1761656787 d:\projects\coding\codeblocks\iti_c\days\day3.h
 	<iostream>
 	<string>
+
+1761828005 d:\projects\coding\codeblocks\iti_c\days\day4.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+	"Day4/task1.h"
+	"Day4/task2.h"
+	"Day4/task3.h"
+	"Day4/task4.h"
+	"Day4/task5.h"
+	"Day4/task6.h"
+	"Day4/task7.h"
+	"Day4/task8.h"
+
+1761827797 d:\projects\coding\codeblocks\iti_c\days\day4\task1.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761829668 d:\projects\coding\codeblocks\iti_c\days\day4\task2.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761828098 d:\projects\coding\codeblocks\iti_c\days\day4\task3.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761827889 d:\projects\coding\codeblocks\iti_c\days\day4\task4.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761827896 d:\projects\coding\codeblocks\iti_c\days\day4\task5.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761827904 d:\projects\coding\codeblocks\iti_c\days\day4\task6.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761827911 d:\projects\coding\codeblocks\iti_c\days\day4\task7.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
+
+1761827918 d:\projects\coding\codeblocks\iti_c\days\day4\task8.h
+	<iostream>
+	<vector>
+	<ctime>
+	<cstdarg>
+	<math.h>
+	<chrono>
 
