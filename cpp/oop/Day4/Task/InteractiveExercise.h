@@ -8,7 +8,7 @@ class InteractiveExercise
 public:
     InteractiveExercise(string t, int d, string diff) : LearninngMaterial(t, d), difficulty(diff) {}
 
-    void DisplayInfo() override {
+    void DisplayInfo()   {
         cout << "[Exercise] " << title << " - " << duration << " mins" << endl;
     }
 };

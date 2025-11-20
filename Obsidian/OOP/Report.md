@@ -65,7 +65,7 @@ This outline provides a logical learning sequence, from the most basic to the mo
     *   **Purpose:** To make classes more intuitive by customizing the behavior of standard C++ operators.
     *   **Modules:**
         *   **Assignment Operator (`=`):**
-            *   Override the assignment operator for the `Stack` class in order to guarantee deep copying.
+            *     the assignment operator for the `Stack` class in order to guarantee deep copying.
         *   **Arithmetic Operators (`+`):**
             *   Overload the addition operator for the `Complex` class.
             *   Use a `friend` function to handle operations with mixed types; for example, `5 + complex_object`.

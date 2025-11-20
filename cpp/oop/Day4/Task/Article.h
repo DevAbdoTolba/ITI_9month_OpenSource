@@ -9,7 +9,7 @@ class Article : public LearninngMaterial {
 public:
     Article(string t, int d, int pages) : LearninngMaterial(t, d), pageCount(pages) {}
 
-    void DisplayInfo() override {
+    void DisplayInfo()   {
         cout << "[Article] " << title << ", Pages: " << pageCount << ", Time: " << duration << " mins" << endl;
     }
 };

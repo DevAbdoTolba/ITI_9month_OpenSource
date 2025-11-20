@@ -8,7 +8,7 @@ class Quiz : public LearninngMaterial {
 public:
     Quiz(string t, int d, int q) : LearninngMaterial(t, d), questionCount(q) {}
 
-    void DisplayInfo() override {
+    void DisplayInfo()   {
         cout << "[Quiz] " << title << ", Questions: " << questionCount << ", Time: " << duration << " mins" << endl;
     }
 };

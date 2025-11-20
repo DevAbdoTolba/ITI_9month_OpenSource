@@ -280,7 +280,7 @@
     class Rect : public GeoShape {
     public:
         // ...
-        double calculateArea() { return dim1 * dim2; } // Overrides the virtual function
+        double calculateArea() { return dim1 * dim2; } //  s the virtual function
     };
 
     // This function relies on virtual to call the correct implementation at runtime
