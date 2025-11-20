@@ -8,7 +8,7 @@ class VideoLesson : public LearninngMaterial {
 public:
     VideoLesson(string t, int d, string res) : LearninngMaterial(t, d), resolution(res) {}
 
-    void DisplayInfo() override {
+    void DisplayInfo()   {
         cout << "[Video] " << title << " (" << resolution << ") - " << duration << " mins" << endl;
     }
 };

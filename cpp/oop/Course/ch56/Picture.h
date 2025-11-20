@@ -1,3 +1,6 @@
+#ifndef PICTURE_H_INCLUDED
+#define PICTURE_H_INCLUDED
+
 #include "Rect.h"
 #include "Line.h"
 
@@ -17,3 +20,5 @@ public:
         for(int i=0; i<lNum; i++) pLine[i].draw();
     }
 };
+
+#endif
