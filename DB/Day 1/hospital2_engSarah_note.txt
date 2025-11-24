@@ -1,0 +1,1 @@
+"in erd number 2 (hospital) the entity Visit_Record should be a N:M relation between Branch and Patient! and alos there is a dealock relation between (Medical_Test, Branch, Visit_Record) with 3 relations that could be updated into only one realtion!" 
