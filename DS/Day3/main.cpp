@@ -1,20 +1,30 @@
 #include <iostream>
+#define UTIL_ARGS int[], int
 #define SORT_ARGS int *arr, int _size, int asc
 
 using namespace std;
 
-void display(int[], int);
+// ==================================
+// ===========Utilities==============
+// ==================================
+void display (UTIL_ARGS);
+void isSorted(UTIL_ARGS, int asc = 1);
+// ==================================
+// ==================================
+// ==================================
+
+
+
 void SelectionSort(SORT_ARGS = 1);
 void InsertionSort(SORT_ARGS = 1);
 
 int main(){
 
-    int arr[]{4,51,2,3,5,6,7};
+    int arr[]{4,51,2,9,5,6,0,7};
     int n = sizeof(arr)/sizeof(arr[0]);
     display(arr, n);
 
-    InsertionSort(arr, n, 0);
-    display(arr, n);
+    isSorted(arr, n);
 
 
     return 0;
@@ -26,11 +36,21 @@ void display(int arr[],int n){
 
     cout << "[ ";
 
-    for(int i = 0; i < n; i++ ){
+    for(int i = 0; i < n-1; i++ ){
         cout << arr[i] << ",\t";
     }
-    cout << " ]" << endl;
+    cout << arr[n-1] << " ]" << endl;
 }
+
+void isSorted(int arr[], int n, int asc){
+    bool sorted = true;
+    for(int i = 0; i < n-1; i++){
+        if(arr[i] <= arr[i+1]) continue;
+        else sorted = false; break;
+    }
+    cout << (sorted ? "SORTED :D": "NOT SORTED ;(");
+}
+
 
 void SelectionSort(SORT_ARGS){
     for(int i=0; i<_size-1; i++){
@@ -69,5 +89,4 @@ void InsertionSort(SORT_ARGS){
         }
         arr[j+1] = insertionValue;
     }
-
 }
