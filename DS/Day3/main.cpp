@@ -1,10 +1,11 @@
 #include <iostream>
+#define SORT_ARGS int *arr, int _size, int asc
 
 using namespace std;
 
 void display(int[], int);
-void SelectionSort(int *arr, int _size, int asc = 1);
-void InsertionSort(int *arr, int _size, int asc = 1);
+void SelectionSort(SORT_ARGS = 1);
+void InsertionSort(SORT_ARGS = 1);
 
 int main(){
 
@@ -31,7 +32,7 @@ void display(int arr[],int n){
     cout << " ]" << endl;
 }
 
-void SelectionSort(int *arr, int _size, int asc){
+void SelectionSort(SORT_ARGS){
     for(int i=0; i<_size-1; i++){
         int indefOfMin = i;
         for(int j = i+1; j < _size; j++){
@@ -57,7 +58,7 @@ void SelectionSort(int *arr, int _size, int asc){
     }
 }
 
-void InsertionSort(int *arr, int _size, int asc){
+void InsertionSort(SORT_ARGS){
 
     for(int i = 1; i < _size; i++){
         int insertionValue = arr[i];
