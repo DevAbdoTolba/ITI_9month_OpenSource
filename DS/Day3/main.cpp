@@ -13,18 +13,21 @@ void isSorted(UTIL_ARGS, int asc = 1);
 // ==================================
 // ==================================
 
-
-
 void SelectionSort(SORT_ARGS = 1);
 void InsertionSort(SORT_ARGS = 1);
+
+void DivideSort(int arr[], int left, int right, int asc = 1);
+void Conquer(int arr[], int left,int mid, int right, int asc = 1);
 
 int main(){
 
     int arr[]{4,51,2,9,5,6,0,7};
     int n = sizeof(arr)/sizeof(arr[0]);
-    display(arr, n);
+    // display(arr, n);
 
-    isSorted(arr, n);
+    DivideSort(arr, 0, n-1, 0);
+    isSorted(arr, n, 0);
+    display(arr, n);
 
 
     return 0;
@@ -48,7 +51,7 @@ void isSorted(int arr[], int n, int asc){
         if(arr[i] <= arr[i+1]) continue;
         else sorted = false; break;
     }
-    cout << (sorted ? "SORTED :D": "NOT SORTED ;(");
+    cout << (sorted ? "SORTED :D": "NOT SORTED ;(") << endl;
 }
 
 
@@ -89,4 +92,50 @@ void InsertionSort(SORT_ARGS){
         }
         arr[j+1] = insertionValue;
     }
+}
+
+void DivideSort(int arr[], int left, int right, int asc){
+    display(arr, 8);
+    if(left >= right) return;
+    int mid = (right+left)/2;
+    DivideSort(arr, left, mid);
+    DivideSort(arr, mid + 1, right);
+
+    Conquer(arr,left,mid,right);
+}
+
+
+void Conquer(int arr[], int left,int mid, int right, int asc){
+    int leftSideSize = mid - left + 1;
+    int rightSizeSize = right - mid;
+
+    int *arrleft  = new int[leftSideSize];
+    int *arrRight = new int[rightSizeSize];
+
+    for(int i = 0; i < leftSideSize; i++) arrleft[i] = arr[i+left];
+    for(int i = 0; i < rightSizeSize; i++) arrRight[i] = arr[i+mid+1];
+
+    int i = 0, j = 0;
+    while (i < leftSideSize && j < rightSizeSize) {
+
+        bool condtion = (asc == 1 ? arrleft[i] <= arrRight[j] : arrleft[i] > arrRight[j]);
+
+        if(condtion){
+            arr[left] = arrleft[i++];
+        } else {
+            arr[left] = arrRight[j++];
+        }
+        left++;
+    }
+
+    while(i < leftSideSize){
+        arr[left++] = arrleft[i++];
+    }
+    while(j < rightSizeSize){
+        arr[left++] = arrRight[j++];
+    }
+
+    delete[] arrleft;
+    delete[] arrRight;
+
 }
