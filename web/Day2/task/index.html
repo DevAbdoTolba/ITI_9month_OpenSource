@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Minimal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #e0e4dc; }
+    header, nav, footer { text-align: center; padding: 8px; background: #8d9a8b; color: #fff; }
+    nav { background: #6d726d; }
+    nav a { color: #b3e0ff; text-decoration: underline; margin: 0 1em; }
+    nav a:hover { color: #fff; }
+    .main-table { width: 100%; border-collapse: separate; border-spacing: 0.5em; margin: 0 auto; }
+    td { border: 1px solid #ccc; vertical-align: top; padding: 8px; background: #757c6e; color: #fff; }
+    .login-box { border: 2px solid red; padding: 4px; margin-bottom: 8px; background: #fff; color: #333; }
+    .side-links img { width: 24px; height: 24px; }
+    .photo-box img { width: 60px; height: 60px; border-radius: 50%; }
+    .news-box { font-size: 0.9em; background: #fff; color: #333; border-radius: 4px; padding: 4px; }
+    .red { color: red; }
+    h3 { color: #ffb3b3; text-align: center; }
+    .footer-link { color: #b3e0ff; text-decoration: underline; }
+    .footer-link:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <header>Header - Website Logo (Image)</header>
+  <nav>Navigation: <a href="#">home</a> <a href="#">contact us</a> <a href="#">about</a></nav>
+  <table class="main-table">
+    <tr>
+      <td rowspan="2">
+        <div class="login-box">
+          <form>
+            <label>User Name:</label><input type="text" value="lorem1"><br>
+            <label>Password:</label><input type="password" value="lorem2"><br>
+            <input type="submit" value="Login">
+          </form>
+          <div class="red">Make border to div</div>
+        </div>
+        <div class="side-links">
+          <a href="https://facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"> Facebook</a><br>
+          <a href="https://x.com/" target="_blank"><img src="https://pngimg.com/d/x_logo_PNG13.png" alt="X Logo"> X</a>
+        </div>
+        <div>
+          <iframe width="160" height="90" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+          <div style="font-size:0.8em;">Iframe Video</div>
+        </div>
+      </td>
+      <td rowspan="2">
+        <h3>My Profile</h3>
+        <ul>
+          <li>Name: lorem3</li>
+          <li>Age: lorem4</li>
+          <li>Address: lorem5</li>
+          <li>Phones: lorem6</li>
+          <li>Faculty: <a href="#">lorem7</a></li>
+          <li>Hobbies:
+            <ol>
+              <li>lorem8</li>
+              <li>lorem9</li>
+              <li>lorem10</li>
+            </ol>
+          </li>
+          <li>Mail: <a href="#">lorem11</a></li>
+        </ul>
+      </td>
+      <td>
+        <div class="photo-box">
+          <img src="me.jpg" alt="Personal Photo"><br>
+          <span>Abdo Tolba</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="news-box">
+          <b>lorem13</b><br>
+          <ul>
+            <li>lorem14</li>
+            <li>lorem15</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" style="text-align:center; background: #8d9a8b; color: #fff;">
+        Footer - <a class="footer-link" href="#top">lorem16</a> link - lorem17
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
