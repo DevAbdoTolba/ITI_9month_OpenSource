@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #e0e4dc; }
+    .container { max-width: 400px; margin: 20px auto; padding: 8px; background: #fff; border-radius: 4px; }
+    label { display: block; margin-top: 8px; font-size: 0.95em; }
+    input, select, textarea { width: 100%; margin-top: 2px; margin-bottom: 8px; }
+    fieldset { margin-top: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    legend { color: #ffb3b3; }
+    .actions { text-align: center; margin-top: 12px; }
+    .terms { margin-top: 8px; }
+    .terms label { display: inline; }
+    .terms a { color: #b3e0ff; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="Thankyou.html" method="get">
+      <input type="hidden" name="userid" value="lorem1">
+      <label for="fname" accesskey="f">First Name *</label>
+      <input type="text" id="fname" name="fname" required tabindex="1" value="lorem2">
+      <label for="lname" accesskey="l">Last Name *</label>
+      <input type="text" id="lname" name="lname" required tabindex="2" value="lorem3">
+      <label for="email" accesskey="e">Email *</label>
+      <input type="email" id="email" name="email" required tabindex="3" value="lorem4@example.com">
+      <label for="password" accesskey="p">Password</label>
+      <input type="password" id="password" name="password" required tabindex="4" value="lorem5">
+      <label for="rpassword" accesskey="r">Repeat Password</label>
+      <input type="password" id="rpassword" name="rpassword" required tabindex="5" value="lorem6">
+      <label for="bdate" accesskey="d">Birth Date</label>
+      <input type="date" id="bdate" name="bdate" tabindex="6">
+      <label for="picture" accesskey="u">User Picture</label>
+      <input type="file" id="picture" name="picture" accept="image/*" tabindex="7">
+      <fieldset>
+        <legend>Gender</legend>
+        <label><input type="radio" name="gender" value="male" tabindex="8" required> Male</label>
+        <label><input type="radio" name="gender" value="female" tabindex="9"> Female</label>
+      </fieldset>
+      <label for="faculty" accesskey="c">Faculty</label>
+      <select id="faculty" name="faculty" tabindex="10">
+        <option value="">-- Select Faculty --</option>
+        <option value="engineering">Engineering</option>
+        <option value="science">Science</option>
+        <option value="medicine">Medicine</option>
+        <option value="commerce">Commerce</option>
+      </select>
+      <fieldset>
+        <legend>Interests</legend>
+        <label><input type="checkbox" name="interests" value="programming" tabindex="11"> Programming</label>
+        <label><input type="checkbox" name="interests" value="reading" tabindex="12"> Reading</label>
+        <label><input type="checkbox" name="interests" value="swimming" tabindex="13"> Swimming</label>
+        <label><input type="checkbox" name="interests" value="music" tabindex="14"> Music</label>
+      </fieldset>
+      <label for="about" accesskey="a">About you</label>
+      <textarea id="about" name="about" tabindex="15">lorem7</textarea>
+      <div class="terms">
+        <input type="checkbox" id="agree" name="agree" required tabindex="16">
+        <label for="agree">I agreed to <a href="terms.html" target="_blank">terms and condition</a></label>
+      </div>
+      <div class="actions">
+        <input type="submit" value="Submit" tabindex="17">
+        <input type="reset" value="Reset" tabindex="18">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

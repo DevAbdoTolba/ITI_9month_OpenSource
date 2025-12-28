@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5;url=Home.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            background-color: #f0e68c;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #2e8b57;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .center-img {
+            display: block;
+            margin: 0 auto 2rem auto;
+            max-width: 300px;
+        }
+        .skip-link {
+            position: fixed;
+            left: 50%;
+            bottom: 40px;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            background: #2e8b57;
+            color: #fff;
+            padding: 0.5em 1.5em;
+            border-radius: 20px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .skip-link:hover {
+            background: #228b22;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome">Welcome to My Website!</div>
+    <div class="name">Abdo Tolba</div>
+    <img src="resources/welcome image.jpg" alt="Welcome Image" class="center-img">
+    <a href="Home.html" class="skip-link">Skip Intro</a>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 Lab Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header" style="width: 100%; background-color: red;">
+        <h1>This is the page header</h1>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <span id="linksbar" style="width: 25%; background-color: gray; float: left; display: block; min-height: 400px;">
+            <h3>Site Menu</h3>
+            <ul class="none-bullet-list">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+            </ul>
+
+            <div id="loginform">
+                <h4>Login</h4>
+                <input type="text" placeholder="Username"><br><br>
+                <input type="password" placeholder="Password"><br><br>
+                <a href="#" class="rounded-btn">Login</a>
+            </div>
+        </span>
+
+        <span id="content" style="width: 75%; background-color: pink; float: left; display: block; min-height: 400px;">
+            <h2>Content Title</h2>
+            <p>This paragraph comes directly after the h2 tag.</p>
+            
+            <p id="aboutus">About Us Section</p>
+
+            <div id="titles">
+                <p class="tabled-bordered">Title 1</p>
+                <p class="tabled-bordered">Title 2</p>
+                <p class="tabled-bordered">Title 3</p>
+            </div>
+
+            <span>
+                <p>This is a nested paragraph. </p>
+            </span>
+
+            <hr>
+
+            <div class="registration-demo">
+                <h3>Registration</h3>
+                <div class="input-container">
+                    <input type="text" required pattern="[A-Za-z]{3,}">
+                    <span class="error-msg">Not valid</span>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <div style="clear: both;"></div>
+
+</body>
+</html>

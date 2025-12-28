@@ -1,0 +1,134 @@
+p, div, span {
+    font-family: "Lucida Calligraphy", cursive;
+}
+
+div > h1 {
+    text-align: center;
+}
+
+.none-bullet-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#linksbar li > a {
+    color: red;
+    background-color: pink;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#linksbar li > a:hover {
+    color: pink;
+    background-color: red;
+}
+
+span#content > h2 + p {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#loginform {
+    border: 2px dashed rgb(20, 70, 60);
+    padding: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    background-color: yellow;
+}
+
+input[type="text"]:focus {
+    background-color: white;
+}
+
+.tabled-bordered {
+    display: table-cell;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+span > p::after {
+    content: " Read this";
+    color: yellow;
+}
+
+span#content > p#aboutus {
+    color: yellow;
+}
+
+p#aboutus {
+    color: red;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #111;
+}
+
+.input-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-container::after {
+    content: "*";
+    color: red;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.input-container input:invalid {
+    border: 2px solid black;
+}
+
+.input-container input:invalid + .error-msg {
+    display: block;
+    color: red;
+    font-size: 12px;
+}
+
+.input-container input:valid {
+    border: 2px solid white;
+}
+
+.input-container input:valid + .error-msg {
+    display: none;
+}
+
+.rounded-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 25px;
+}
