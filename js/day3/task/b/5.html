@@ -1,0 +1,30 @@
+<style>
+    #nav { position: fixed; top: 0; background: #333; width: 100%; }
+    #nav a { color: white; padding: 15px; display: inline-block; text-decoration: none; }
+    #nav a.active { background-color: #4CAF50; }
+    div.sec { height: 600px; padding-top: 60px; border-bottom: 1px solid #ccc; }
+</style>
+
+<div id="nav">
+    <a href="#s1" id="l1" class="active">Section 1</a>
+    <a href="#s2" id="l2">Section 2</a>
+    <a href="#s3" id="l3">Section 3</a>
+</div>
+
+<div id="s1" class="sec" style="background: #f1f1f1">Section 1 Content</div>
+<div id="s2" class="sec" style="background: #ddd">Section 2 Content</div>
+<div id="s3" class="sec" style="background: #bbb">Section 3 Content</div>
+
+<script>
+    window.onscroll = function() {
+        let secs = document.querySelectorAll('.sec');
+        let links = document.querySelectorAll('#nav a');
+        
+        secs.forEach(function(sec, i) {
+            if (window.scrollY >= (sec.offsetTop - 70) && window.scrollY < (sec.offsetTop + sec.offsetHeight)) {
+                links.forEach(l => l.classList.remove('active'));
+                links[i].classList.add('active');
+            }
+        });
+    };
+</script>

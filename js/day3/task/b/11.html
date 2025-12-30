@@ -1,0 +1,12 @@
+<p>Wait 5 seconds...</p>
+<script>
+    setTimeout(function() {
+        let win = window.open("", "", "width=400,height=400");
+        win.document.write("<h3>Ad Window</h3>");
+        for(let j=0; j<50; j++) win.document.write("Line "+j+"<br>");
+        
+        setInterval(function() {
+            if(!win.closed) win.scrollBy(0, 10);
+        }, 100);
+    }, 5000);
+</script>

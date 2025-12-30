@@ -1,0 +1,17 @@
+<span id="cnt">3</span> seconds to open...
+<br>
+<a href="#" onclick="startCount()">Start Link</a>
+
+<script>
+    function startCount() {
+        let c = 3;
+        let i = setInterval(function(){
+            c--;
+            document.getElementById("cnt").innerHTML = c;
+            if(c <= 0) {
+                clearInterval(i);
+                window.open("3.html", "");
+            }
+        }, 1000);
+    }
+</script>

@@ -1,0 +1,9 @@
+<label>Name (Letters only): <input type="text" id="mytxt" /></label>
+
+<script>
+    document.getElementById("mytxt").addEventListener("keydown", function(e) {
+        if ((e.keyCode < 65 || e.keyCode > 90)) {
+            e.preventDefault();
+        }
+    });
+</script>
