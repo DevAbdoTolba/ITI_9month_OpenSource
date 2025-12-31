@@ -1,0 +1,23 @@
+<p>
+    Line 1<br><br><br><br>
+    Line 2<br><br><br><br>
+    Line 3<br><br><br><br>
+    Line 4<br><br><br><br>
+    Line 5<br><br><br><br>
+    Line 6<br><br><br><br>
+    Line 7<br><br><br><br>
+    End of Page
+</p>
+
+<script>
+    let scrollInterval = setInterval(function () {
+        window.scrollBy(0, 50);
+        
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            
+            console.log("Done");
+            clearInterval(scrollInterval);
+            window.close();
+        }
+    }, 500);
+</script>

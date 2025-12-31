@@ -1,0 +1,24 @@
+<select id="sel" onchange="chgMap()">
+    <option value="">Select Country</option>
+    <option value="Egypt">Egypt</option>
+    <option value="Abu Qurqas, Minia">Abu Qurqas, Minia</option>
+</select>
+<br><br>
+<iframe id="map" width="400" height="300" src=""></iframe>
+
+<script>
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            let lat = pos.coords.latitude;
+            let lon = pos.coords.longitude;
+            document.getElementById("map").src = "https://maps.google.com/maps?q=" + lat + "," + lon + "&output=embed";
+        });
+    }
+
+    function chgMap() {
+        let val = document.getElementById("sel").value;
+        if(val) {
+            document.getElementById("map").src = "https://maps.google.com/maps?q=" + val + "&output=embed";
+        }
+    }
+</script>
