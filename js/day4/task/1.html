@@ -1,0 +1,125 @@
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin: 0 auto;
+        width: 300px;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid black;
+    }
+
+    input[type="submit"] {
+        background-color: #ff4d63;
+        color: white;
+        border: none;
+        border-radius: 20rem;
+        width: 50%;
+    }
+
+    #cont {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #ckx {
+        display: flex;
+        align-items: center;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.8em;
+        align-self: flex-start;
+        margin-bottom: 10px;
+        height: 1em;
+    }
+</style>
+
+<form action="./1.1.html">
+    <img src="Screenshot_82.png" alt="login image" />
+    <input type="text" name="name" id="name" placeholder="Enter your username here" required />
+    <span id="nameError" class="error"></span>
+
+    <input type="email" name="Email" id="email" placeholder="EMail" required />
+    <span id="emailError" class="error"></span>
+
+    <input type="password" name="password" id="password" placeholder="Password" />
+    <span id="passwordError" class="error"></span>
+
+    <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat Password" />
+    <span id="repeatPasswordError" class="error"></span>
+
+    <select id="city">
+        <option>Abuqurqas</option>
+        <option>Samalout</option>
+        <option>Matai</option>
+    </select>
+    <span id="cityError" class="error"></span>
+
+    <div id="cont">
+        <div>
+            <div id="ckx">
+                <input type="checkbox" name="remember" id="remember" />
+                <label for="remember">Remember me</label>
+            </div>
+        </div>
+        <div id="pass">Forgot password?</div>
+    </div>
+
+    <label for="ckbx">Accept terms</label>
+    <input type="checkbox" id="ckbx" />
+    <span id="termsError" class="error"></span>
+
+    <input type="submit" value="Login" id="submit" />
+</form>
+
+<script>
+    const nameInput = document.getElementById("name");
+    const nameError = document.getElementById("nameError");
+
+    nameInput.addEventListener("focusout", (e) => {
+        if (e.target.value.length <= 3) {
+            e.target.style.border = "2px solid red";
+            nameError.textContent = "Invalid name";
+        } else {
+            e.target.style.border = "2px solid white";
+            nameError.textContent = "";
+        }
+    });
+
+
+    const submit = document.getElementById("submit");
+    const password = document.getElementById("password");
+    const passwordError = document.getElementById("passwordError");
+    submit.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (nameInput.value.length <= 3 ||
+            password.value.length != repeatPassword.value.length
+        ) {
+            nameError.textContent = "Invalid name";
+            repeatPasswordError.textContent = "Passwords do not match";
+            alert("Plz correct the validation error first")
+        } else {
+            nameError.textContent = "";
+            repeatPasswordError.textContent = "";
+
+            submit.submit();
+        }
+    });
+
+</script>

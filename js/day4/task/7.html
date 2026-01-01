@@ -1,0 +1,13 @@
+<div id="myDiv"></div>
+
+<script>
+    const img = document.createElement('img');
+    img.setAttribute('src', '1.jpg');
+    const div = document.getElementById('myDiv');
+    div.appendChild(img);
+    alert("Number of child nodes: " + div.childNodes.length);
+    div.addEventListener('click', () => {
+        div.removeChild(img);
+    })
+
+</script>
