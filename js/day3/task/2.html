@@ -1,0 +1,21 @@
+<button id="btn">Start clock</button>
+<div id="div"></div>
+<script>
+    let interv;
+    document.getElementById("btn").addEventListener("click", function () {
+        alert("Clock started", new Date().getTime());
+
+        interv = setInterval(function () {
+            let date = new Date();
+            document.getElementById("div").innerHTML = date.getTime();
+        }, 1000);
+
+        document.addEventListener("keydown", function (e) {
+            console.log("ALT: ", e.altKey);
+            if (e.key == "w" && e.altKey) {
+                clearInterval(interv);
+                alert("Clock Stopped!");
+            }
+        });
+    });
+</script>

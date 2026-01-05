@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <body>
+        <a href="products.html">Back</a>
+        <h2>My Cart</h2>
+        <div id="items"></div>
+        <h3 id="tot"></h3>
+
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://fakestoreapi.com/products");
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var products = JSON.parse(xhr.responseText);
+                    var cart = JSON.parse(
+                        localStorage.getItem("myCart") || "[]",
+                    );
+                    var html = "";
+                    var total = 0;
+
+                    for (var i = 0; i < cart.length; i++) {
+                        for (var j = 0; j < products.length; j++) {
+                            if (products[j].id == cart[i].pid) {
+                                var p = products[j];
+                                var sub = p.price * cart[i].qty;
+                                total += sub;
+
+                                html +=
+                                    "<div style='border-bottom:1px solid #999; padding:10px'>";
+                                html +=
+                                    "<img src='" + p.image + "' width='50'> ";
+                                html += p.title + " | Price: " + p.price + "$ ";
+                                html +=
+                                    " Count: <input type='number' value='" +
+                                    cart[i].qty +
+                                    "' onchange='edit(" +
+                                    p.id +
+                                    ", this.value)'> ";
+                                html +=
+                                    " <button onclick='del(" +
+                                    p.id +
+                                    ")'>Delete</button>";
+                                html += "</div>";
+                            }
+                        }
+                    }
+                    document.getElementById("items").innerHTML = html;
+                    document.getElementById("tot").innerHTML =
+                        "Total: " + Math.floor(total) + " $";
+                }
+            };
+
+            function edit(id, val) {
+                var cart = JSON.parse(localStorage.getItem("myCart"));
+                for (var k = 0; k < cart.length; k++) {
+                    if (cart[k].pid == id) {
+                        if (Number(val) <= 0) {
+                            cart.splice(k, 1);
+                        } else {
+                            cart[k].qty = Number(val);
+                        }
+                    }
+                }
+                localStorage.setItem("myCart", JSON.stringify(cart));
+                location.reload();
+            }
+
+            function del(id) {
+                var cart = JSON.parse(localStorage.getItem("myCart"));
+                var newArr = [];
+                for (var k = 0; k < cart.length; k++) {
+                    if (cart[k].pid != id) {
+                        newArr.push(cart[k]);
+                    }
+                }
+                localStorage.setItem("myCart", JSON.stringify(newArr));
+                location.reload();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <body style="text-align: center; padding: 30px">
+        <a href="products.html">Back home</a>
+        <hr />
+        <div id="con"></div>
+
+        <script>
+            var str = window.location.search;
+            var id = str.split("=")[1];
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://fakestoreapi.com/products/" + id, true);
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var obj = JSON.parse(xhr.responseText);
+
+                    var show = "";
+                    show += "<h1>" + obj.title + "</h1>";
+                    show += "<img src='" + obj.image + "' width='200'><br>";
+                    show += "<h3>Price: " + obj.price + "$</h3>";
+                    show += "<p style='color:grey'>" + obj.description + "</p>";
+                    show += "Category: " + obj.category;
+
+                    document.getElementById("con").innerHTML = show;
+                }
+            };
+        </script>
+    </body>
+</html>

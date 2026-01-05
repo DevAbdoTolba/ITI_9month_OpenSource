@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            #all {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .card {
+                border: 1px solid #ccc;
+                width: 200px;
+                padding: 10px;
+                margin: 5px;
+                text-align: center;
+                height: 300px;
+            }
+
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="padding: 20px; text-align: right">
+            <a href="cart.html"><b>Go to Cart</b></a>
+        </div>
+        <div id="all">Loading...</div>
+
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://fakestoreapi.com/products", true);
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var str = "";
+                    for (var i = 0; i < data.length; i++) {
+                        str += '<div class="card">';
+                        str += '<img src="' + data[i].image + '"><br>';
+                        str += "<b>" + data[i].price + " $</b><br>";
+                        str +=
+                            '<a href="details.html?id=' +
+                            data[i].id +
+                            '">' +
+                            data[i].title.substring(0, 20) +
+                            "..</a><br><br>";
+                        str +=
+                            '<button onclick="add(' +
+                            data[i].id +
+                            ')">Add to Cart</button>';
+                        str += "</div>";
+                    }
+                    document.getElementById("all").innerHTML = str;
+                }
+            };
+
+            function add(id) {
+                var list = localStorage.getItem("myCart");
+                var arr = [];
+
+                if (list) {
+                    arr = JSON.parse(list);
+                }
+
+                var found = false;
+                for (var j = 0; j < arr.length; j++) {
+                    if (arr[j].pid == id) {
+                        arr[j].qty++;
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    arr.push({ pid: id, qty: 1 });
+                }
+
+                localStorage.setItem("myCart", JSON.stringify(arr));
+                alert("Added!");
+            }
+        </script>
+    </body>
+</html>

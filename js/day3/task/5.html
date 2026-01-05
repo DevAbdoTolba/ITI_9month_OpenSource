@@ -1,0 +1,26 @@
+<a
+    href="#"
+    onclick="
+        (function (e) {
+            e.preventDefault();
+            console.log('wait 3 secs');
+            setTimeout(function () {
+                window.open('#', '_blank');
+            }, 3000);
+        })(event)
+    "
+>
+    open ad
+</a>
+<br />
+<a
+    href="#"
+    onclick="
+        (function (e) {
+            e.preventDefault();
+            window.close();
+        })(event)
+    "
+>
+    close ad
+</a>

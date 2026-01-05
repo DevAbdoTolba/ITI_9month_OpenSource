@@ -1,0 +1,7 @@
+<span id="wel">Welcome</span>
+
+<script>
+    let q = new URLSearchParams(window.location.search);
+    document.getElementById("wel").innerHTML +=
+        `<h4><bold>` + q.get("name") + `</bold></h4>`;
+</script>
