@@ -1,0 +1,41 @@
+<select id="u"></select>
+<button id="b" disabled>Show Image</button>
+<div id="d"></div>
+
+<script>
+  let users = [];
+  const sel = document.getElementById('u');
+  const btn = document.getElementById('b');
+  const div = document.getElementById('d');
+
+  setTimeout(
+    ()=>{
+  // Fetch and Populate
+  fetch('https://dummyjson.com/users')
+    .then(res => res.json())
+    .then(data => {
+      users = data.users;
+      users.forEach(u => {
+        const opt = document.createElement('option');
+        opt.value = u.id;
+        opt.innerText = u.firstName;
+        sel.appendChild(opt);
+      });
+      btn.disabled = false;
+    });
+
+  // Handle Click
+  btn.onclick = () => {
+    const user = users.find(u => u.id == sel.value);
+    if (user) {
+      div.innerHTML = `
+        <img src="${user.image}" width="100"><br>
+        Name: ${user.firstName} ${user.lastName}<br>
+        Email: ${user.email}
+      `;
+    }
+  };},
+    1000
+  )
+  
+</script>
