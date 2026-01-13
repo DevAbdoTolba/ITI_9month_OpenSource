@@ -12,8 +12,7 @@ public class Task2TokienizerDelimeter{
         } else {
             tokened = new StringTokenizer(args[1], args[0]);
         }
-            int T = tokened.countTokens();
-            while(T-- > 0){
+            while(tokened.hasMoreTokens()){
                 System.out.println(tokened.nextToken());
             }
     }

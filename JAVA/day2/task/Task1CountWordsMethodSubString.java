@@ -3,7 +3,7 @@ public class Task1CountWordsMethodSubString{
         String word = null ,text = null;
         int count = 0;
         if(args.length == 0){
-            word = " ";
+            word = "ITI";
             text = "ITI develops people and ITI house of developers and ITI for";
         } else if(args.length == 1){
             System.out.println("Please provide both the word and the text.");
@@ -11,12 +11,14 @@ public class Task1CountWordsMethodSubString{
             word = args[0];
             text = args[1];
         }
-        
+
+        String textSub = text;
         while(text.contains(word)){
             count++;
-            text = text.substring(text.indexOf(word) + word.length());
+            textSub = text.substring(text.indexOf(word) + word.length());
         }
         System.out.println(count);
+        
     }
 }
 
