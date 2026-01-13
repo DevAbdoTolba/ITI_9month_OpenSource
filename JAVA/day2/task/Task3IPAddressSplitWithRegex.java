@@ -11,9 +11,13 @@ public class Task3IPAddressSplitWithRegex{
             text = args[1];
         }
         
-        String[] textSplitted = text.split(word);
-        for(int i = 0; i < textSplitted.length; i++){
-            System.out.println(textSplitted[i]);    
+        if(text.matches("[1-9][0-9]{2}[.][1-9]?[0-9]{0,2}[.][1-9]?[0-9]{0,2}[.][1-9]?[0-9]{0,2}")){
+            String[] textSplitted = text.split(word);
+            for(int i = 0; i < textSplitted.length; i++){
+                System.out.println(textSplitted[i]);    
+            }
+        } else {
+            System.out.println("It is not a valid ip address!");
         }
     }
 }
