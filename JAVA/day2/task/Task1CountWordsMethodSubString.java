@@ -1,16 +1,15 @@
-public class T1CountWordsMethod1{
+public class Task1CountWordsMethodSubString{
     public static void main(String[] args){
-        String word,text;
+        String word = null ,text = null;
+        int count = 0;
         if(args.length == 0){
-            String word = "ITI";
-            String text = "ITI develops people and ITI house of developers and ITI for";
-            text = " " + text + " ";
-            System.out.println((text.split(word).length) - 1);
+            word = " ";
+            text = "ITI develops people and ITI house of developers and ITI for";
         } else if(args.length == 1){
             System.out.println("Please provide both the word and the text.");
         } else {
-            String word = args[0];
-            String text = args[1];
+            word = args[0];
+            text = args[1];
         }
         
         while(text.contains(word)){
@@ -21,4 +20,4 @@ public class T1CountWordsMethod1{
     }
 }
 
-// javac T1CountWordsMethod1.java && java T1CountWordsMethod1 ITI "ITI develops people and ITI house of developers and ITI for"
+// javac Task1CountWordsMethodSubString.java && java Task1CountWordsMethodSubString ITI "ITI develops people and ITI house of developers and ITI for"
