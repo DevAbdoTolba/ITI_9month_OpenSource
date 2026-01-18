@@ -13,7 +13,30 @@ public class highestPopulatedCity {
     public static void main(String[] args) {
         CountryDao countryDao = InMemoryWorldDao.getInstance();
         
-        class CountryPopulation {
+
+
+
+        countryDao.findAllCountries().stream()
+        .peek(country -> System.out.print(country.getName() + " : "))
+        .map(country -> 
+            country.getCities().stream().mapToInt(
+                city -> city.getPopulation()
+            ).max().orElse(0)
+        ).forEach(
+            highestPopulation -> System.out.println(highestPopulation)
+        );
+
+
+
+
+
+
+
+
+
+
+    /*
+            class CountryPopulation {
             private String countryName;
             private int highestCityPopulation;
 
@@ -56,17 +79,10 @@ public class highestPopulatedCity {
         for(CountryPopulation countryPopulation: countryPopulations){
             System.out.println(countryPopulation);
         }
+    */
 
 
-        // countryDao.findAllCountries().stream()
-        // .peek(country -> System.out.print(country.getName() + " : "))
-        // .map(country -> 
-        //     country.getCities().stream().mapToInt(
-        //         city -> city.getPopulation()
-        //     ).max().orElse(0)
-        // ).forEach(
-        //     highestPopulation -> System.out.println(highestPopulation)
-        // );
+
 
 
 
