@@ -9,14 +9,16 @@ public class highestPopulatedContinent {
 
     public static void main(String[] args) {
         CountryDao countryDao = InMemoryWorldDao.getInstance();
-
+        
         countryDao.getAllContinents().stream()
-                .peek(continent -> System.out.print(continent + " : "))
                 .map(continent -> countryDao.findCountriesByContinent(continent).stream()
                         .flatMap(country -> country.getCities().stream())
-                        .mapToInt(city -> city.getPopulation())
-                        .max()
-                        .orElse(0))
-                .forEach(population -> System.out.println(population));
+                        .reduce((c1, c2) -> c1.getPopulation() > c2.getPopulation() ? c1 : c2)
+                        .orElse(null))
+                .filter(city -> city != null)
+                .forEach(city -> {
+                    Country country = countryDao.findCountryByCode(city.getCountryCode());
+                    System.out.println(country.getContinent() + city);
+                });
     }
 }
