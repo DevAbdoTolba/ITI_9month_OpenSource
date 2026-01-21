@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Resume</title>
+        <meta charset="UTF-8" />
+        <style>
+            /* Reset & Basics */
+            body {
+                font-family: sans-serif;
+                margin: 0 auto;
+                width: 800px;
+                color: #333;
+            }
+            p {
+                margin: 5px 0;
+                font-size: 14px;
+                color: #555;
+            }
+
+            /* The Header - Orange background */
+            header {
+                background: #f2994a;
+                padding: 40px;
+                overflow: hidden;
+            } /* overflow clears floats */
+            .profile-img {
+                float: left;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                border: 5px solid white;
+                background: #ddd;
+            }
+            .header-text {
+                float: left;
+                margin-left: 30px;
+                color: white;
+                margin-top: 20px;
+            }
+            h1 {
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .profession {
+                font-size: 18px;
+                opacity: 0.9;
+            }
+            .bio {
+                font-size: 12px;
+                max-width: 400px;
+                margin-top: 10px;
+                opacity: 0.8;
+            }
+
+            /* Columns */
+            aside {
+                float: left;
+                width: 30%;
+                padding: 20px 0;
+                padding-left: 20px;
+            }
+            
+            aside h2{
+                text-align: center;
+            }
+            
+            main {
+                float: right;
+                width: 63%;
+                padding: 20px 0;
+                padding-right: 20px;
+            }
+            
+            main article{
+                margin-left: 30px;
+            }
+
+            /* Left Column Styling */
+            .contact-item {
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+            .icon {
+                width: 20px;
+                display: inline-block;
+                color: #f2994a;
+                font-weight: bold;
+            }
+
+            /* Progress Bars (Lazy way: divs are easier to style than meter) */
+            .bar-container {
+                background: #e0e0e0;
+                height: 10px;
+                margin: 5px 0 15px 0;
+            }
+            .bar-fill {
+                height: 100%;
+            }
+            .orange {
+                background: #f2994a;
+                width: 90%;
+            }
+            .blue {
+                background: #2f80ed;
+                width: 40%;
+            }
+            .red {
+                background: #eb5757;
+                width: 95%;
+            }
+
+            /* Right Column Styling */
+            h3 {
+                background: #f2994a;
+                color: white;
+                padding: 5px 10px;
+                text-transform: uppercase;
+                margin-top: 0;
+            }
+            article {
+                margin-bottom: 15px;
+            }
+            h4 {
+                margin: 0;
+                color: #333;
+            }
+            .date {
+                font-weight: bold;
+                margin-right: 5px;
+                color: #333;
+            }
+
+            /* Donuts placeholder */
+            .skills-img {
+                width: 100%;
+                margin-top: 10px;
+                opacity: 0.7;
+            }
+
+            /* Strips */
+            .strips{
+                height: 10px;
+                background: linear-gradient(
+                    to right, 
+                    red 0%, 
+                    red 33.3%, 
+                    orange 33.3%, 
+                    orange 66.6%, 
+                    cyan 66.6%, 
+                    cyan 100%
+                  );;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="https://picsum.photos/150" class="profile-img" alt="Me" />
+            <div class="header-text">
+                <h1>Andrew Hloom</h1>
+                <div class="profession">PROFESSION</div>
+                <div class="bio">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas porttitor congue massa.
+                </div>
+            </div>
+        </header>
+
+        <aside>
+            <h2 style="border-bottom: 2px solid #333; padding-bottom: 10px">
+                Contact
+            </h2>
+            <div class="contact-item">
+                <span class="icon">🏠</span> 123 Park Avenue, Michigan
+            </div>
+            <div class="contact-item">
+                <span class="icon">📱</span> 123 456 7899
+            </div>
+            <div class="contact-item">
+                <span class="icon">✉</span> info@hloom.com
+            </div>
+            <div class="contact-item">
+                <span class="icon">🔗</span> www.hloom.com
+            </div>
+
+            <h2
+                style="
+                    border-bottom: 2px solid #333;
+                    padding-bottom: 10px;
+                    margin-top: 30px;
+                "
+            >
+                Languages
+            </h2>
+
+            <strong>English</strong>
+            <div class="bar-container"><div class="bar-fill orange"></div></div>
+
+            <strong>German</strong>
+            <div class="bar-container"><div class="bar-fill blue"></div></div>
+
+            <strong>Spanish</strong>
+            <div class="bar-container"><div class="bar-fill red"></div></div>
+
+            <h2
+                style="
+                    border-bottom: 2px solid #333;
+                    padding-bottom: 10px;
+                    margin-top: 30px;
+                "
+            >
+                Skills
+            </h2>
+            <img
+                src="https://picsum.photos/200/50"
+                class="skills-img"
+                alt="skills"
+            />
+
+            <h2
+                style="
+                    border-bottom: 2px solid #333;
+                    padding-bottom: 10px;
+                    margin-top: 30px;
+                "
+            >
+                Online Info
+            </h2>
+            <p>🔵 /hloom &nbsp; 🔴 /hloom</p>
+        </aside>
+
+        <main>
+            <h3>Achievements</h3>
+            <article>
+                <h4><time>2010</time> Lorem Project</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas porttitor congue massa.
+                </p>
+            </article>
+            <article>
+                <h4><time>2012</time> Vivamus Project</h4>
+                <p>Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.</p>
+            </article>
+            <article>
+                <h4><time>2015</time> Nunc Project</h4>
+                <p>Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.</p>
+            </article>
+
+            <h3>Education</h3>
+            <article>
+                <h4><time>1997</time> - <time>2001</time> ABC School</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            <article>
+                <h4><time>2001</time> - <time>2004</time> Ohio University</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            <article>
+                <h4><time>2004</time> - <time>2006</time> ABC Studies</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+
+            <h3>Work Experience</h3>
+            <article>
+                <h4><time>2010</time> - <time>2013</time> ABC Company</h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </article>
+            <article>
+                <h4><time>2013</time> - <time>2015</time> Zoom Company</h4>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </article>
+        </main>
+
+
+        <div class="strips">
+            &nbsp;
+        </div>
+    </body>
+</html>
