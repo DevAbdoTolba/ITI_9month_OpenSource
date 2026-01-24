@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Assignments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: sans-serif; margin: 0; padding-bottom: 50px; }
+
+        .navbar {
+            background: #555;
+            border-radius: 10px;
+            overflow: hidden;
+            width: fit-content;
+            margin: 20px;
+        }
+        .navbar ul {
+            list-style-type: none;
+            padding: 0; margin: 0;
+        }
+        .navbar li {
+            display: inline-block;
+            padding: 15px 20px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        .navbar li a { text-decoration: none; color: white; }
+        .navbar li i {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .navbar li:hover { background: #333; }
+        .navbar li:hover i { color: #f2994a; }
+        .active { background: #27ae60 !important; }
+
+        .fancy-text {
+            font-family: 'Lobster', cursive;
+            font-size: 24px;
+            color: #555;
+            padding: 20px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 25px;
+            padding-right: 10px;
+            margin: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .chip img {
+            width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer;
+        }
+        .chip-info {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 120px;
+            transition: width 0.5s ease;
+            white-space: nowrap;
+        }
+        .chip-name { padding: 0 10px; font-weight: bold; }
+        .close-btn {
+            cursor: pointer; color: #888; font-weight: bold; margin-left: auto;
+        }
+        .close-btn:hover { color: red; }
+        
+        .gallery { display: flex; gap: 10px; padding: 20px; background: #eee; }
+        .gallery img {
+            width: 200px; height: 120px; object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .gallery img:hover {
+            transform: scale(0.9);
+        }
+
+        .search-box { padding: 20px; }
+        input[type="text"] {
+            width: 100px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            transition: width 0.5s ease-in-out;
+        }
+        input[type="text"]:focus {
+            width: 300px;
+            border-color: #27ae60;
+            outline: none;
+        }
+
+        .tiger-container {
+            width: 100%; height: 100px;
+            position: relative;
+            background: #e0f7fa;
+            overflow: hidden;
+        }
+        .tiger {
+            width: 80px;
+            position: absolute;
+            bottom: 0;
+            animation: walk 10s infinite linear;
+        }
+        @keyframes walk {
+            0% { left: 90%; transform: scaleX(1); }
+            45% { left: 0; transform: scaleX(1); }
+            50% { left: 0; transform: scaleX(-1); }
+            95% { left: 90%; transform: scaleX(-1); }
+            100% { left: 90%; transform: scaleX(1); }
+        }
+
+        .columns-text {
+            column-count: 3;
+            column-gap: 30px;
+            column-rule: 1px solid #ccc;
+            padding: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div style="margin-left: 60px;"> <h2>1. Animated Navbar</h2>
+        <div class="navbar">
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-home"></i></a></li>
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                <li><a href="#"><i class="fas fa-trash"></i></a></li>
+            </ul>
+        </div>
+
+        <h2>2. Custom Google Font</h2>
+        <p class="fancy-text">This is a paragraph using the 'Lobster' font from Google Fonts. Don't ask me to change it.</p>
+
+        <h2>3. Contact Chip (Click X to close, Click Face to open)</h2>
+        <div class="chip">
+            <img src="https://i.pravatar.cc/100?img=5" alt="Person" onclick="document.getElementById('info').style.width = '120px'">
+            <div class="chip-info" id="info">
+                <span class="chip-name">Jane Row</span>
+                <span class="close-btn" onclick="document.getElementById('info').style.width = '0px'">x</span>
+            </div>
+        </div>
+
+        <h2>5. Zoom Out Gallery</h2>
+        <div class="gallery">
+            <img src="https://picsum.photos/id/10/200/120" alt="1">
+            <img src="https://picsum.photos/id/11/200/120" alt="2">
+            <img src="https://picsum.photos/id/12/200/120" alt="3">
+            <img src="https://picsum.photos/id/13/200/120" alt="4">
+        </div>
+
+        <h2>6. Animated Search Input</h2>
+        <div class="search-box">
+            <input type="text" placeholder="Click to expand...">
+        </div>
+
+        <h2>7. Walking Tiger (Animation)</h2>
+        <div class="tiger-container">
+            <img src="./tiger.gif" class="tiger" alt="Tiger">
+        </div>
+
+        <h2>8. CSS3 Columns</h2>
+        <div class="columns-text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. This paragraph is split into three columns automatically using CSS3.</p>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

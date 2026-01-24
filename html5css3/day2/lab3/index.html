@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG & Canvas Tasks</title>
+</head>
+<body>
+
+    <h3>1. SVG Face (Hover to change colors)</h3>
+    <svg width="200" height="200">
+        <circle cx="100" cy="100" r="80" fill="#f2c94c" />
+        <circle class="face-part" cx="70" cy="80" r="15" fill="black" 
+            onmouseover="this.setAttribute('fill', 'blue')" 
+            onmouseout="this.setAttribute('fill', 'black')"/>
+
+        <circle class="face-part" cx="130" cy="80" r="15" fill="black" 
+            onmouseover="this.setAttribute('fill', 'blue')" 
+            onmouseout="this.setAttribute('fill', 'black')"/>
+
+        <circle class="face-part" cx="100" cy="120" r="5" fill="red" 
+            onmouseover="this.setAttribute('fill', 'green')" 
+            onmouseout="this.setAttribute('fill', 'red')"/>
+
+        <line class="face-part" x1="60" y1="150" x2="140" y2="150" stroke="black" stroke-width="5" 
+              onmouseover="this.setAttribute('stroke', 'purple')" 
+              onmouseout="this.setAttribute('stroke', 'black')"/>
+    </svg>
+
+    <h3>2. Canvas Face (Click to Smile & Scale)</h3>
+    <canvas id="canvas2" width="400" height="200"></canvas>
+    <script>
+        const c2 = document.getElementById('canvas2');
+        const ctx2 = c2.getContext('2d');
+        
+        const sadFace = new Image();
+        sadFace.src = 'https://cdn-icons-png.flaticon.com/512/166/166556.png';
+        
+        const happyFace = new Image();
+        happyFace.src = 'https://cdn-icons-png.flaticon.com/512/166/166538.png';
+
+        sadFace.onload = function() {
+            ctx2.clearRect(0,0, c2.width, c2.height);
+            ctx2.drawImage(sadFace, 150, 50, 100, 100);
+        }
+
+        c2.onmousedown = function() {
+            ctx2.clearRect(0,0, c2.width, c2.height);
+            ctx2.drawImage(happyFace, 100, 50, 200, 100); 
+        }
+
+        c2.onmouseup = function() {
+            ctx2.clearRect(0,0, c2.width, c2.height);
+            ctx2.drawImage(sadFace, 150, 50, 100, 100);
+        }
+    </script>
+
+    <h3>3. Semi-transparent Circle & Gradient Name</h3>
+    <canvas id="canvas3" width="400" height="300"></canvas>
+    <script>
+        const c3 = document.getElementById('canvas3');
+        const ctx3 = c3.getContext('2d');
+
+        ctx3.beginPath();
+        ctx3.arc(200, 150, 120, 0, 2 * Math.PI);
+        ctx3.fillStyle = 'rgba(0, 150, 255, 0.3)';
+        ctx3.fill();
+
+        ctx3.font = "bold 40px Arial";
+        let gradient = ctx3.createLinearGradient(100, 0, 300, 0);
+        gradient.addColorStop(0, "red");
+        gradient.addColorStop(0.5, "purple");
+        gradient.addColorStop(1, "blue");
+
+        ctx3.fillStyle = gradient;
+        ctx3.textAlign = "center";
+        ctx3.fillText("DEV ABDO", 200, 160);
+    </script>
+
+    <h3>4. Paint (Left Click: Draw | Right Click: Erase)</h3>
+    <canvas id="canvas4" width="400" height="300" oncontextmenu="return false;"></canvas>
+    <script>
+        const c4 = document.getElementById('canvas4');
+        const ctx4 = c4.getContext('2d');
+        let isDrawing = false;
+
+        c4.onmousedown = function(e) {
+            isDrawing = true;
+            ctx4.beginPath();
+            ctx4.moveTo(e.offsetX, e.offsetY);
+        }
+
+        c4.onmousemove = function(e) {
+            if (!isDrawing) return;
+
+            if (e.buttons === 1) { 
+                ctx4.globalCompositeOperation = 'source-over';
+                ctx4.strokeStyle = 'black';
+                ctx4.lineWidth = 2;
+            } else if (e.buttons === 2) { 
+                ctx4.globalCompositeOperation = 'destination-out'; 
+                ctx4.lineWidth = 15;
+            }
+
+            ctx4.lineTo(e.offsetX, e.offsetY);
+            ctx4.stroke();
+        }
+
+        c4.onmouseup = function() { isDrawing = false; }
+        c4.onmouseout = function() { isDrawing = false; }
+    </script>
+
+</body>
+</html>
