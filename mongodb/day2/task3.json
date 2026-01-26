@@ -1,0 +1,19 @@
+[
+  {
+    "$unwind" : "$Courses"
+  },
+  {
+    "$group" : {
+      "_id": "$FacultyID",
+      "AverageGrade": { "$avg": "$Courses.grade" }
+    }
+  },
+  {
+    "$project" :
+      {
+        "_id": 0,
+        "FacultyID": "$_id",
+        "AverageGrade": 1
+      }
+  }
+]

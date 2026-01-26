@@ -1,0 +1,20 @@
+[
+  {
+    "$match":
+
+      {
+        "isFired": false
+      }
+  },
+  {
+    "$unwind": "$Courses"
+  },
+  {
+    "$project" : {
+      "_id" : 0,
+      "FullName" : { "$concat" : ["$FirstName"," ","$LastName"]},
+      "CourseID": "$Courses.CourseID",
+      "Grade": "$Courses.grade"
+    }
+  }
+]
