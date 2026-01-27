@@ -1,0 +1,29 @@
+[
+  {
+    "$unwind": "$Courses"
+  },
+  {
+    "$lookup" : 
+    {
+      "from": "course",
+      "localField": "Courses.CourseID",
+      "foreignField": "_id",
+      "as": "course_info"
+  	}
+	},
+  {
+    "$project" : 
+      {
+        "_id": 0,
+        "FullName": { "$concat": ["$FirstName", " ", "$LastName"] },
+        "CourseName": { "$arrayElemAt": ["$course_info.Course Name", 0] },
+        "Grade": "$Courses.Grade",
+        "CourseFinalMark": { "$arrayElemAt": ["$course_info.Final Mark", 0] }
+      }
+  },
+  {
+    "$sort" : {
+      "Grade" : -1
+    }
+  }
+]

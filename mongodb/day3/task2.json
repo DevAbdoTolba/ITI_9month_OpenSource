@@ -1,0 +1,39 @@
+{
+  $jsonSchema: {
+    bsonType: "object",
+    required: ["FirstName", "LastName", "IsFired", "Courses"],
+    properties: {
+      FirstName: {
+        bsonType: "string",
+        description: "must be a string and is required"
+      },
+      LastName: {
+        bsonType: "string",
+        description: "must be a string and is required"
+      },
+      IsFired: {
+        bsonType: "bool",
+        description: "must be a boolean"
+      },
+      Courses: {
+        bsonType: "array",
+        items: {
+          bsonType: "object",
+          required: ["CourseID", "Grade"],
+          properties: {
+            CourseID: {
+              bsonType: "objectId",
+              description: "must be an ObjectId"
+            },
+            Grade: {
+              bsonType: ["int"],
+              minimum: 0,
+              maximum: 100,
+              description: "must be a number between 0 and 100"
+            }
+          }
+        }
+      }
+    }
+  }
+}

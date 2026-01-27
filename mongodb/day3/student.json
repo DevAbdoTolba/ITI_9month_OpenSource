@@ -1,0 +1,123 @@
+[
+  {
+    "_id": {
+      "$oid": "6975e9ae41b66778dc628ca0"
+    },
+    "fName": "Mrihan",
+    "lName": "Mohamed",
+    "age": 26,
+    "faculty": {
+      "name": "FCI",
+      "address": "Minia"
+    },
+    "grades": [
+      {
+        "cname": "c#",
+        "grade": 60,
+        "pass": true
+      },
+      {
+        "cname": "JS",
+        "grade": 100,
+        "pass": true
+      }
+    ],
+    "isFired": false
+  },
+  {
+    "_id": {
+      "$oid": "6975ebbe41b66778dc628ca1"
+    },
+    "fName": "Abdo",
+    "lName": "Mohamed",
+    "age": 26,
+    "faculty": {
+      "name": "FCI",
+      "address": "Minia"
+    },
+    "grades": [
+      {
+        "cname": "c#",
+        "grade": 60,
+        "pass": true
+      },
+      {
+        "cname": "JS",
+        "grade": 100,
+        "pass": true
+      }
+    ],
+    "isFired": false
+  },
+  {
+    "_id": {
+      "$oid": "6975ebbe41b66778dc628ca2"
+    },
+    "fName": "Tolba",
+    "lName": "Mohamed",
+    "age": 26,
+    "faculty": {
+      "name": "FCI",
+      "address": "Minia"
+    },
+    "grades": [
+      {
+        "cname": "c#",
+        "grade": 60,
+        "pass": true
+      },
+      {
+        "cname": "JS",
+        "grade": 100,
+        "pass": true
+      }
+    ],
+    "isFired": false
+  },
+  {
+    "_id": {
+      "$oid": "6975ebbe41b66778dc628ca3"
+    },
+    "fName": "Khalieed",
+    "lName": "Ahmed",
+    "age": 26,
+    "faculty": {
+      "name": "FCI",
+      "address": "Minia"
+    },
+    "grades": [
+      {
+        "cname": "c#",
+        "grade": 60,
+        "pass": true
+      },
+      {
+        "cname": "JS",
+        "grade": 100,
+        "pass": true
+      }
+    ],
+    "isFired": true
+  },
+  {
+    "_id": {
+      "$oid": "6975f46d41b66778dc628ca4"
+    },
+    "FirstName": "Tolba",
+    "LastName": "Ahmed",
+    "isFired": false,
+    "FacultyID": 1,
+    "Courses": [
+      {
+        "CourseID": {
+          "$oid": "6975f48741b66778dc628ca6"
+        },
+        "grade": 15
+      },
+      {
+        "CourseID": 1,
+        "grade": 20
+      }
+    ]
+  }
+]
