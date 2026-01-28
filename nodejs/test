@@ -1,0 +1,64 @@
+#!/bin/bash
+
+echo GET id 0
+if curl http://localhost:3000/0 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in GET
+fi
+
+
+echo GET id not found
+if curl http://localhost:3000/-1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in GET not found
+fi
+
+
+echo POST new
+if curl -X POST -d '{"name":"Newww Post", "content":"some content"}' http://localhost:3000/1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in POST new
+fi
+
+
+echo POST duplicate
+if curl -X POST -d '{"name":"New Post", "content":"some content"}' http://localhost:3000/1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in POST duplicate
+fi
+
+
+echo PUT update
+if curl -X PUT -d '{"name":"Updated Post", "content":"new content"}' http://localhost:3000/1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in PUT
+fi
+
+
+echo PUT not found
+if curl -X PUT -d '{"name":"ghost"}' http://localhost:3000/999 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in PUT not found
+fi
+
+
+echo DELETE id 1
+if curl -X DELETE http://localhost:3000/1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in DELETE
+fi
+
+
+echo DELETE not found
+if curl -X DELETE http://localhost:3000/1 2>/dev/null; then
+   echo -e "\n"
+else
+echo ERROR in DELETE not found
+fi
