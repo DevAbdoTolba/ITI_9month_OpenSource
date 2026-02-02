@@ -4,3 +4,4 @@ obj/
 *.class
 .zed
 .vscode
+node_modules/
