@@ -4,6 +4,8 @@ const Post = require('../models/Post');
 exports.getMyPosts = async (req, res) => {
   try {
     const posts = await Post.find({ user: req.user.userId });
+    console.log("PSOTS:", posts);
+    
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: error.message });
