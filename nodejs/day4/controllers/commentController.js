@@ -1,10 +1,9 @@
 const Comment = require('../models/Comment');
 
-// RULE: View only their own comments
 exports.getMyComments = async (req, res) => {
   try {
     const comments = await Comment.find({ user: req.user.userId })
-      .populate('post', 'title'); // Optional: show which post it belongs to
+      .populate('post', 'title');
     res.status(200).json(comments);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -19,13 +18,13 @@ exports.createComment = async (req, res) => {
       post: postId,
       user: req.user.userId
     });
+    console.log(comment)
     res.status(201).json(comment);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
 
-// RULE: Update only their own comments
 exports.updateComment = async (req, res) => {
   try {
     const { id } = req.params;
@@ -44,7 +43,6 @@ exports.updateComment = async (req, res) => {
   }
 };
 
-// RULE: Delete only their own comments
 exports.deleteComment = async (req, res) => {
   try {
     const { id } = req.params;
