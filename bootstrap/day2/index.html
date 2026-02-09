@@ -3,9 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hosto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
-    
+<body class="bg-light">
+
+    <div class="bg-dark text-white py-2 small">
+        <div class="container d-flex justify-content-between">
+            <div>
+                <i class="fa-solid fa-cloud me-1"></i> Welcome to Hosto
+            </div>
+            <div>
+                <a href="#" class="text-white text-decoration-none me-3">Layouts</a>
+                <a href="#" class="text-white text-decoration-none me-3">Elements</a>
+                <a href="#" class="text-white text-decoration-none me-3">Portfolio</a>
+                <a href="#" class="text-white text-decoration-none">Contact us</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-secondary" href="#">
+                <i class="fa-solid fa-tree text-success"></i> HOSTO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto fw-bold text-uppercase small">
+                    <li class="nav-item"><a class="nav-link text-success" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="#">Layouts</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="#">Elements</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="#">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary" href="#">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://picsum.photos/seed/tolbasad/1920/600" class="d-block w-100" >
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">Lorem</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/seed/tolbahappy/1920/600" class="d-block w-100" >
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">Lorem</h1>
+                    <p class="lead">Sed placerat fringilla quam et.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/seed/tolbagood/1920/600" class="d-block w-100" >
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">Lorem</h1>
+                    <p class="lead">Mauris id turpis diam. Ut pellentesque.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <div class="container-fluid bg-success text-white py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 border-end border-white border-opacity-25">
+                    <div class="mb-3">
+                        <i class="fa-regular fa-thumbs-up fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold">Secure & Reliable</h4>
+                    <p class="small opacity-75 px-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mauris dui. Nam neque.</p>
+                </div>
+                <div class="col-md-4 border-end border-white border-opacity-25">
+                    <div class="mb-3">
+                        <i class="fa-solid fa-rocket fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold">Quick & Super Fast</h4>
+                    <p class="small opacity-75 px-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mauris dui. Nam neque.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <i class="fa-regular fa-comments fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold">Customer Support</h4>
+                    <p class="small opacity-75 px-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a mauris dui. Nam neque.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 pt-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-secondary">Hosto <span class="text-success">Plans & Pricing</span></h2>
+            <p class="text-secondary small">Our hosting plans in detail, choose the right plan for you.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white text-center fw-bold py-3">Web Hosting</div>
+                    <div class="card-body text-center">
+                        <h2 class="text-secondary display-5 fw-bold">$ 4<span class="fs-6">.45</span></h2>
+                        <p class="text-muted small">/month</p>
+                        <hr>
+                        <ul class="list-unstyled text-start small ps-3 text-secondary lh-lg">
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 10GB Storage Space</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 15GB Bandwidth</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Unlimited FTP & Email</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Free Domain</li>
+                        </ul>
+                        <button class="btn btn-success w-100 rounded-0 mt-2">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white text-center fw-bold py-3">Reseller Hosting</div>
+                    <div class="card-body text-center">
+                        <h2 class="text-secondary display-5 fw-bold">$ 9<span class="fs-6">.45</span></h2>
+                        <p class="text-muted small">/month</p>
+                        <hr>
+                        <ul class="list-unstyled text-start small ps-3 text-secondary lh-lg">
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 10GB Storage Space</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 15GB Bandwidth</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Unlimited FTP & Email</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Free Domain</li>
+                        </ul>
+                        <button class="btn btn-success w-100 rounded-0 mt-2">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white text-center fw-bold py-3">VPS Hosting</div>
+                    <div class="card-body text-center">
+                        <h2 class="text-secondary display-5 fw-bold">$ 12<span class="fs-6">.45</span></h2>
+                        <p class="text-muted small">/month</p>
+                        <hr>
+                        <ul class="list-unstyled text-start small ps-3 text-secondary lh-lg">
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 10GB Storage Space</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 15GB Bandwidth</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Unlimited FTP & Email</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Free Domain</li>
+                        </ul>
+                        <button class="btn btn-success w-100 rounded-0 mt-2">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white text-center fw-bold py-3">Domain Names</div>
+                    <div class="card-body text-center">
+                        <h2 class="text-secondary display-5 fw-bold">$ 14<span class="fs-6">.45</span></h2>
+                        <p class="text-muted small">/month</p>
+                        <hr>
+                        <ul class="list-unstyled text-start small ps-3 text-secondary lh-lg">
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 10GB Storage Space</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> 15GB Bandwidth</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Unlimited FTP & Email</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i> Free Domain</li>
+                        </ul>
+                        <button class="btn btn-success w-100 rounded-0 mt-2">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-secondary">Key Features of <span class="text-success">Hosto</span></h2>
+            <p class="text-secondary small">Our hosting plans in detail, choose the right plan for you.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <h5 class="fw-bold text-secondary">Web Hosting</h5>
+                        <div class="badge bg-white text-danger border rounded-circle d-flex flex-column justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <span style="font-size: 8px;">starting</span>
+                            <span>$1.99</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="small text-secondary">Eiusmod tempor labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <button class="btn btn-light border btn-sm text-secondary">Read more</button>
+                        </div>
+                        <div class="col-4">
+                            <img src="https://picsum.photos/seed/tolbatect/150/100" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <h5 class="fw-bold text-secondary">E-Commerce</h5>
+                        <div class="badge bg-white text-danger border rounded-circle d-flex flex-column justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <span style="font-size: 8px;">starting</span>
+                            <span>$1.99</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="small text-secondary">Eiusmod tempor labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <button class="btn btn-light border btn-sm text-secondary">Read more</button>
+                        </div>
+                        <div class="col-4">
+                            <img src="https://picsum.photos/seed/tolbajava/150/100" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <h5 class="fw-bold text-secondary">My Website</h5>
+                        <div class="badge bg-white text-danger border rounded-circle d-flex flex-column justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <span style="font-size: 8px;">starting</span>
+                            <span>$1.99</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="small text-secondary">Eiusmod tempor labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <button class="btn btn-light border btn-sm text-secondary">Read more</button>
+                        </div>
+                        <div class="col-4">
+                            <img src="https://picsum.photos/seed/tolbanode/150/100" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                        <h5 class="fw-bold text-secondary">Servers</h5>
+                        <div class="badge bg-white text-danger border rounded-circle d-flex flex-column justify-content-center align-items-center" style="width: 50px; height: 50px;">
+                            <span style="font-size: 8px;">starting</span>
+                            <span>$1.99</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="small text-secondary">Eiusmod tempor labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <button class="btn btn-light border btn-sm text-secondary">Read more</button>
+                        </div>
+                        <div class="col-4">
+                            <img src="https://picsum.photos/seed/tolbapython/150/100" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-top py-4">
+        <div class="container">
+            <marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();">
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-html5"></i>
+                    </a>
+                </span>
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-css3-alt"></i>
+                    </a>
+                </span>
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-js"></i>
+                    </a>
+                </span>
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-java"></i>
+                    </a>
+                </span>
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-react"></i>
+                    </a>
+                </span>
+                <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-node"></i>
+                    </a>
+                </span>
+                 <span class="mx-5">
+                    <a href="#" class="link-success link-offset-2 link-underline-opacity-0 text-secondary display-4">
+                        <i class="fa-brands fa-python"></i>
+                    </a>
+                </span>
+            </marquee>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">About Us</h6>
+                    <p class="small text-secondary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+                    <p class="small text-secondary mb-1"><i class="fa-solid fa-house me-2"></i> 2001 Street Name, City</p>
+                    <p class="small text-secondary mb-1"><i class="fa-solid fa-phone me-2"></i> +123 456 7890</p>
+                    <p class="small text-secondary"><i class="fa-solid fa-envelope me-2"></i> info@hosto.com</p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Navigation</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-secondary text-decoration-none">Web Hosting</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Reseller Hosting</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">VPS Hosting</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Dedicated Servers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Useful Links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-secondary text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Terms of Service</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Support Center</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Tags</h6>
+                    <div>
+                        <span class="badge bg-success rounded-0 fw-normal">Hosting</span>
+                        <span class="badge bg-secondary rounded-0 fw-normal">Domain</span>
+                        <span class="badge bg-secondary rounded-0 fw-normal">VPS</span>
+                        <span class="badge bg-secondary rounded-0 fw-normal">Cloud</span>
+                        <span class="badge bg-secondary rounded-0 fw-normal">Business</span>
+                        <span class="badge bg-success rounded-0 fw-normal">Design</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary mt-5">
+            <div class="d-flex justify-content-between align-items-center small">
+                <span class="text-secondary">Hosto © 2013 Privacy Policy</span>
+                <div>
+                    <i class="fa-brands fa-facebook-f text-success me-3"></i>
+                    <i class="fa-brands fa-twitter text-success me-3"></i>
+                    <i class="fa-brands fa-linkedin-in text-success me-3"></i>
+                    <i class="fa-brands fa-pinterest text-success"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
