@@ -3,7 +3,7 @@ const router = express.Router();
 const commentController = require('../controllers/commentController');
 const auth = require('../middleware/auth');
 
-const { validate, createCommentSchema } = require('../middleware/validate');
+const { validate, createCommentSchema } = require('../utils/validate');
 
 router.use(auth);
 

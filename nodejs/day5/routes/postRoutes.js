@@ -3,7 +3,7 @@ const router = express.Router();
 const postController = require('../controllers/postController');
 const auth = require('../middleware/auth');
 
-const { validate, createPostSchema } = require('../middleware/validate');
+const { validate, createPostSchema } = require('../utils/validate');
 
 // All Post routes require login
 router.use(auth);

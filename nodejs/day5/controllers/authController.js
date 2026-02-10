@@ -2,6 +2,18 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
+// Create a transporter using Ethereal test credentials.
+// For production, replace with your actual SMTP server details.
+const transporter = nodemailer.createTransport({
+  port: 587,
+  service: "gmail", 
+  secure: false, // Use true for port 465, false for port 587
+  auth: {
+    user: "mtolba2004@gmail.com",
+    pass: "ktzp qvnb ftid dlsi",
+  },
+});
+
 exports.signup = async (req, res) => {
   try {
     
@@ -11,8 +23,9 @@ exports.signup = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: 'Username already exists' });
     }
-
+    console.log("EMAIL:::",email)
     const user = await User.create({ username, password, email });
+    if(email !== undefined) 
     (async () => {
       const info = await transporter.sendMail({
         from: '"Tolba com" <mtolba2004@gmail.com>',
@@ -24,6 +37,7 @@ exports.signup = async (req, res) => {
     
       console.log("Message sent:", info.messageId);
     })();
+    else console.log("EMAIAAAILL: NOOMAAAIL")
     res.status(201).json({ message: 'User created successfully', userId: user._id });
   } catch (error) {
     
@@ -33,7 +47,7 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password,email } = req.body;
 
     const user = await User.findOne({ username });
     if (!user || !(await user.comparePassword(password))) {
@@ -47,8 +61,7 @@ exports.signin = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    const email = user.email;
-
+    if(email !== undefined)
     (async () => {
       const info = await transporter.sendMail({
         from: '"Tolba com" <mtolba2004@gmail.com>',
@@ -60,6 +73,7 @@ exports.signin = async (req, res) => {
     
       console.log("Message sent:", info.messageId);
     })();
+    else console.log("EMAIAAAILL: NOOMAAAIL")
 
     res.status(200).json({ token, userId: user._id });
   } catch (error) {
