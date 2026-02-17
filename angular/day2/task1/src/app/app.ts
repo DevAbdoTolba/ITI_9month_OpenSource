@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Carousel } from './carousel/carousel';
+import { Name } from './name/name';
+import { Temp } from './temp/temp';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ Carousel, Name, Temp],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('task1');
 }

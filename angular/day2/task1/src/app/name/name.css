@@ -1,0 +1,31 @@
+main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: cyan;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    padding: 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+
+
+    input {
+      padding: 1ch;
+      width: 40ch;
+    }
+    button {
+      width: 10ch;
+    }
+  }
+
+}

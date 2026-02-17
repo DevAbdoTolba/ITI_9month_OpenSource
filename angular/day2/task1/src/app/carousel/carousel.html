@@ -1,1 +1,14 @@
-<p>carousel works!</p>
+<main>
+
+  <div >
+    <img (load)="runner()" src="https://picsum.photos/seed/{{seed}}/400/200" />
+  </div>
+
+  <div>
+    <button (click)="next()">Next</button>
+    <button  (click)="prev()">prev</button>
+    <button  (click)="slide()">slide</button>
+    <button  (click)="stop()">stop</button>
+  </div>
+
+</main>
