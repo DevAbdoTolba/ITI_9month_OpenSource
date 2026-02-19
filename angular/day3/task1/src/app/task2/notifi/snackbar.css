@@ -1,0 +1,5 @@
+div {
+  padding: 10px;
+  background-color: var(--snackbar-color);
+  border-radius: 5px;
+}

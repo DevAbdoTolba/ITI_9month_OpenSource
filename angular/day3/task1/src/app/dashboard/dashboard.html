@@ -1,0 +1,33 @@
+<main>
+  <h1>Product Dashboard</h1>
+  <h3>Favorite Product: {{ fav }}</h3>
+
+  <div>
+    <div>
+      <h2>Add Product</h2>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="productName" />
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" [(ngModel)]="productPrice" />
+
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category" [(ngModel)]="productCategory" />
+
+        <button type="submit" (click)="addProduct()">Add</button>
+      </form>
+    </div>
+    <div>
+      @for (product of products; track product.productName) {
+        <app-product
+          (deleteProduct)="deleteProduct(products.indexOf(product))"
+          (favProduct)="addToFav($event)"
+          [productName]="product.productName"
+          [productPrice]="product.productPrice"
+          [productCategory]="product.productCategory"
+        />
+      }
+    </div>
+  </div>
+</main>
