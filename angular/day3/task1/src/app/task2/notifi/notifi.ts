@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 
 
 
@@ -29,11 +30,18 @@ export class Snackbar {
 
 @Component({
   selector: 'app-notifi',
-  imports: [Snackbar],
+  imports: [Snackbar, NgSwitch, NgSwitchCase, NgSwitchDefault],
   templateUrl: './notifi.html',
   styleUrl: './notifi.css',
 })
-export class Notifi {}
+export class Notifi {
+notifications = [
+    { message: 'This is a notification message', color: '#e0f2fe' },
+    { message: 'This is NOT a notification message', color: '#fee2e2' },
+    { message: 'Indeed a notification', color: '#d1fae5' },
+    { message: 'Unknown notification', color: '#f3f4f6' }
+  ];
+}
 
 
 

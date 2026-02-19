@@ -1,4 +1,11 @@
-<snackbar message="This is a notification message" color="lightblue" />
-<snackbar message="This is NOT notification message" color="tomato" />
-<snackbar message="Indeed a notification" color="cyan" />
+@for (type of ['info', 'error', 'success', 'tolba']; track type) {
+  <div [ngSwitch]="type">
+    <snackbar *ngSwitchCase="'info'" message="This is a notification message" color="#e0f2fe" />
 
+    <snackbar *ngSwitchCase="'error'" message="This is NOT notification message" color="#fee2e2" />
+
+    <snackbar *ngSwitchCase="'success'" message="Indeed a notification" color="#d1fae5" />
+
+    <snackbar *ngSwitchDefault message="Unknown notification" color="#f3f4f6" />
+  </div>
+}
