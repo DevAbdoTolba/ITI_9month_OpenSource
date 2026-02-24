@@ -5,3 +5,5 @@ obj/
 .zed
 .vscode
 node_modules/
+
+.angular
