@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: #007bff;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+
+  a:hover {
+    background-color: #0056b3;
+  }
+
+  a.active {
+    background-color: #0056b3;
+    font-weight: bold;
+  }
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
