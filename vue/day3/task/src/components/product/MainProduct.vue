@@ -38,7 +38,7 @@ onMounted(() => {
             </div>
 
             <h3 :class="props.main_product.discount > 0 ? 'strikethrough' : ''">Price: {{props.main_product.price}}$</h3>
-            <h3 v-if="props.main_product.discount > 0" style="color: green;">
+            <h3 v-if="props.main_product.discount > 0" style="color: #4CAF50;">
                 Discounted: {{ props.main_product.price * (props.main_product.discount/100) }}$
             </h3>
 
@@ -55,37 +55,43 @@ onMounted(() => {
 
 <style scoped>
 .main-product-box {
-    border: 2px dashed #666;
     padding: 20px;
     display: flex;
     gap: 20px;
-    background: white;
+    background: #f0f0f0;
+}
+.info{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 .badge-new {
-    background: red;
-    color: white;
+    background: #E91E63;
+    color: #FFFFFF;
     padding: 5px;
     font-weight: bold;
 }
 .tag {
-    background: #eee;
+    background: rgba(0, 0, 0, 0);
     padding: 2px 5px;
-    border: 1px solid black;
+    border: 1px solid #212121;
     margin-right: 5px;
 }
 .strikethrough {
     text-decoration: line-through;
-    color: gray;
+    color: #9E9E9E;
 }
 .buy-btn {
-    background: blue;
-    color: white;
+    background: #2196F3;
+    color: #FFFFFF;
     font-size: 20px;
     padding: 10px;
     cursor: pointer;
 }
 .buy-btn:disabled {
-    background: gray;
+    background: #BDBDBD;
     cursor: not-allowed;
 }
 </style>

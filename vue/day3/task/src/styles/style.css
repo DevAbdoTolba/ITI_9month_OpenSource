@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 #app {
     max-width: 900px;
     margin: 0 auto;
-    background: white;
+    background: #FAFAFA;
     padding: 20px;
     border: 2px solid #ccc;
 }

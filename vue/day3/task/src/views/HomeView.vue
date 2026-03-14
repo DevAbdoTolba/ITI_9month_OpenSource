@@ -1,15 +1,22 @@
 <script setup>
 import MainProduct from '@/components/product/MainProduct.vue'
 import RelatedProducts from '@/components/product/RelatedProducts.vue'
+import { computed } from 'vue';
 
 const props = defineProps({
     main_product: Object,
-    products: []
+    products: [Object]
 })
 
-
-    console.log("HEEHRHEEEEEE:", props.main_product);
-    console.log("After HEEHRHEEEEEE:", props.products);
+const filtredRelatedProducts = computed(
+  ( )=>{
+      console.log("HEEHRHEEEEEE:", props.main_product);
+      console.log("After HEEHRHEEEEEE:", props.products);
+      const filtered = props.products.filter(p => p.id != props.main_product.id);
+      console.log("After HEEHRHEEEEEE 222:", filtered);
+      return filtered;
+  }
+)
 
 const emit = defineEmits(['buy-emit'])
 
@@ -24,5 +31,5 @@ function buyMainProduct() {
     @buy-product="buyMainProduct"
   />
 
-  <RelatedProducts :products="products"/>
+  <RelatedProducts :products="filtredRelatedProducts"/>
 </template>

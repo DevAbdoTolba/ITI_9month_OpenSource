@@ -25,7 +25,7 @@ onMounted( () => {
 <style scoped>
 .app-navbar {
     background: #333;
-    color: white;
+    color: #FFFFFF;
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -38,7 +38,7 @@ onMounted( () => {
     margin-right: 15px;
 }
 .app-navbar a {
-    color: yellow;
+    color: #FFC107;
     text-decoration: none;
 }
 </style>

@@ -2,7 +2,7 @@
 import NavbarComponent from '@/components/navbar/NavbarComponent.vue'
 import { ref, reactive } from 'vue'
 
-const website_logo = 'ITI_VUE'
+const website_logo = 'Vue'
 const navLinks = ['home', 'about']
 
 

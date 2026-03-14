@@ -7,8 +7,8 @@ const props = defineProps({
 </script>
 
 <template>
-<div style="margin-top: 50px; border-top: 5px solid black; padding-top: 20px;">
-    <h2>Related Products : </h2>
+<div style="margin-top: 50px; border-top: 5px solid #212121; padding-top: 20px;">
+    <h2 style="color : #FFFFFF;">Related Products : </h2>
 
     <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
         <ProductCard v-for="product in products" :product="product"/>

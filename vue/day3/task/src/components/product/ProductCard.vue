@@ -18,11 +18,11 @@ const props = defineProps({
             
             <div>
                 <span :class="props.product.discount > 0 ? 'strikethrough' : ''">{{props.product.price}} $</span>
-                <span v-if="props.product.discount > 0" style="margin-left: 10px; color: green; font-weight: bold;">
+                <span v-if="props.product.discount > 0" style="margin-left: 10px; color: #4CAF50; font-weight: bold;">
                     {{props.product.price * (props.product.discount/100)}} $
                 </span>
                 
-                <div v-if="props.product.stock <= 0" style="color: red; margin-top: 5px;">Out of stock!!</div>
+                <div v-if="props.product.stock <= 0" class="out-of-stock">Out of stock!!</div>
             </div>
             
             <br>
@@ -38,7 +38,7 @@ const props = defineProps({
                 v-else
                 :to="{ name: 'products', params: { id: props.product.id } }" 
             >
-                <button>View Product</button>
+                <button class="view-btn">View Product</button>
             </RouterLink>
         </div>
     </div>
@@ -46,17 +46,31 @@ const props = defineProps({
 
 <style scoped>
 .simple-card {
-    border: 1px solid black;
+    border: 1px solid #212121;
     width: 200px;
     background: #fafafa;
 }
 .strikethrough {
     text-decoration: line-through;
-    color: gray;
+    color: #9E9E9E;
 }
 .buy-btn {
-    background: green;
-    color: white;
+    background: #4CAF50;
+    color: #FFFFFF;
     padding: 5px 10px;
+    cursor: pointer;
 }
+
+.out-of-stock {
+    color: #E91E63;
+    display: inline;
+}
+
+.view-btn {
+    background: #121212;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
 </style>
