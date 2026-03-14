@@ -1,100 +1,55 @@
 <script setup>
 import NavbarComponent from '@/components/navbar/NavbarComponent.vue'
-import { ref, reactive } from 'vue'
+import { computed } from 'vue'
+import { useFetch, useLocalStorage } from '@vueuse/core'
 
 const website_logo = 'Vue'
 const navLinks = ['home', 'about']
+const url = "http://localhost:3000/products"
+
+const cart = useLocalStorage('cart', [])
+const cartCount = computed(() => cart.value.length)
+
+const { isFetching, error, data: products } = useFetch(url).get().json()
+
+const main_product = computed(() => products.value ? products.value[0] : null)
+
+async function buyFromProducts(id) {
+  if (!id || !products.value) return
+
+  const product = products.value.find(p => p.id == id)
+  if (!product || product.stock <= 0) return
+
+  product.stock--
+
+  cart.value = [...cart.value, { id: product.id, name: product.name }]
+
+ await useFetch(`${url}/${id}`).put(product)
 
 
-const main_product = reactive({
-  "id": 1,
-  "name": "Cozy Sneakers",
-  "description": "High-quality sneakers that go with everything you wear.",
-  "images": [
-    "https://picsum.photos/seed/main/400/400"
-  ],
-  "badge": "NEW",
-  "price": 120,
-  "discount": 20,
-  "tags": ["Fashion", "Casual", "Sport"],
-  "stock": 3
-})
-
-const products = reactive([
-  {
-    "id": 1,
-    "name": "Cozy Sneakers",
-    "description": "High-quality sneakers that go with everything you wear.",
-    "images": ["https://picsum.photos/seed/1/300/300"],
-    "badge": "NEW",
-    "price": 120,
-    "discount": 20,
-    "stock": 10,
-    "tags": ["Fashion", "Casual", "Sport"]
-  },
-  {
-    "id": 2,
-    "name": "Running Shoes",
-    "description": "Built for speed and comfort on any terrain.",
-    "images": ["https://picsum.photos/seed/2/300/300"],
-    "badge": "",
-    "price": 90,
-    "discount": 10,
-    "stock": 0,
-    "tags": ["Sport", "Running"]
-  },
-  {
-    "id": 3,
-    "name": "Casual Boots",
-    "description": "Rugged boots for everyday adventures.",
-    "images": ["https://picsum.photos/seed/3/300/300"],
-    "badge": "SALE",
-    "price": 150,
-    "discount": 0,
-    "stock": 8,
-    "tags": ["Casual", "Winter"]
-  },
-  {
-    "id": 4,
-    "name": "Flip Flops",
-    "description": "Light and breezy for sunny days.",
-    "images": ["https://picsum.photos/seed/4/300/300"],
-    "badge": "",
-    "price": 30,
-    "discount": 50,
-    "stock": 20,
-    "tags": ["Summer", "Casual"]
-  }
-])
-
-
-
-function decreaseStock() {
-  if (main_product.stock > 0) {
-    console.log("running decreaseStock")
-    main_product.stock--
-  };
-}
-
-function buyFromProducts(id) {
-  if (id) {
-    products.forEach(product => {
-      if (product.id == id && product.stock > 0) {
-        product.stock--;
-      }
-    })
-  }
-  console.log("Parent recieved data from productView id = ", id)
 }
 </script>
 
 <template>
-  <NavbarComponent :logo_text="website_logo" :links="navLinks"/>
+  <NavbarComponent
+    :logo_text="website_logo"
+    :links="navLinks"
+    :cart-count="cartCount"
+    @cart-click="() => console.log('cart', cart.value)"
+  />
   
+  <div v-if="isFetching" style="padding: 2rem; text-align: center;">
+    Loading products...
+  </div>
+
+  <div v-else-if="error" style="padding: 2rem; color: red;">
+    Failed to load products: {{ error }}
+  </div>
+
   <RouterView 
+    v-else-if="products && main_product"
     :products="products" 
     :main_product="main_product" 
-    @buy-emit="decreaseStock"
     @tell-parent-to-buy="buyFromProducts"
-    />
+  />
 </template>

@@ -47,7 +47,7 @@ onMounted(() => {
                 :disabled="props.main_product.stock <= 0"
                 @click="buy"
             >
-                Buy Now
+                Add to cart
             </button>
         </div>
     </div>
