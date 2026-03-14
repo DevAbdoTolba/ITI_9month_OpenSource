@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e0e0e0;
+    color: #111;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+#app {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+}
