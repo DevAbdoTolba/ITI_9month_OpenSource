@@ -21,12 +21,14 @@ async function buyFromProducts(id) {
   if (!product || product.stock <= 0) return
 
   product.stock--
-
   cart.value = [...cart.value, { id: product.id, name: product.name }]
 
- await useFetch(`${url}/${id}`).put(product)
+  await useFetch(`${url}/${id}`).put(product).json()
+}
 
-
+function clearCart() {
+  console.log('Cart clicked! Total items: ' + cartCount.value)
+  cart.value = []
 }
 </script>
 
@@ -35,14 +37,14 @@ async function buyFromProducts(id) {
     :logo_text="website_logo"
     :links="navLinks"
     :cart-count="cartCount"
-    @cart-click="() => console.log('cart', cart.value)"
+    @cart-click="clearCart"
   />
   
   <div v-if="isFetching" style="padding: 2rem; text-align: center;">
     Loading products...
   </div>
 
-  <div v-else-if="error" style="padding: 2rem; color: red;">
+  <div v-else-if="error">
     Failed to load products: {{ error }}
   </div>
 
