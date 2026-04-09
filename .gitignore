@@ -8,15 +8,13 @@ node_modules/
 
 .angular
 
-# WordPress core (ignore everything except our custom theme)
+# WordPress core (ignore everything except setup.php)
 php/wordpress/wp-admin/
 php/wordpress/wp-includes/
 php/wordpress/wp-config.php
-php/wordpress/wp-content/uploads/
-php/wordpress/wp-content/themes/twenty*/
-php/wordpress/wp-content/plugins/
-php/wordpress/wp-content/index.php
-php/wordpress/wp-content/themes/index.php
-php/wordpress/*.php
+php/wordpress/wp-content/
+php/wordpress/wp-*.php
+php/wordpress/index.php
+php/wordpress/xmlrpc.php
 php/wordpress/license.txt
 php/wordpress/readme.html
