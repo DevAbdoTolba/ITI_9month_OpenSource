@@ -1,7 +1,7 @@
 <?php
+add_action('init', function () {
+
 if (get_option('iti_setup_done')) return;
-if (!function_exists('wp_insert_post')) return;
-if (defined('DOING_AJAX') && DOING_AJAX) return;
 
 require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -372,3 +372,5 @@ if (file_exists(WP_PLUGIN_DIR . '/contact-form-7/wp-contact-form-7.php')) {
 }
 
 update_option('iti_setup_done', true);
+
+});
