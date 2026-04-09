@@ -7,3 +7,16 @@ obj/
 node_modules/
 
 .angular
+
+# WordPress core (ignore everything except our custom theme)
+php/wordpress/wp-admin/
+php/wordpress/wp-includes/
+php/wordpress/wp-config.php
+php/wordpress/wp-content/uploads/
+php/wordpress/wp-content/themes/twenty*/
+php/wordpress/wp-content/plugins/
+php/wordpress/wp-content/index.php
+php/wordpress/wp-content/themes/index.php
+php/wordpress/*.php
+php/wordpress/license.txt
+php/wordpress/readme.html
