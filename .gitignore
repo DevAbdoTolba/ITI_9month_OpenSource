@@ -8,11 +8,12 @@ node_modules/
 
 .angular
 
-# WordPress core (ignore everything except setup.php)
+# WordPress core
 php/wordpress/wp-admin/
 php/wordpress/wp-includes/
 php/wordpress/wp-config.php
-php/wordpress/wp-content/
+php/wordpress/wp-content/*
+!php/wordpress/wp-content/mu-plugins/
 php/wordpress/wp-*.php
 php/wordpress/index.php
 php/wordpress/xmlrpc.php
