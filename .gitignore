@@ -8,6 +8,10 @@ node_modules/
 
 .angular
 
+
+# python
+__pycache__/
+
 # WordPress core
 php/wordpress/wp-admin/
 php/wordpress/wp-includes/
