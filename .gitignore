@@ -19,3 +19,13 @@ php/wordpress/index.php
 php/wordpress/xmlrpc.php
 php/wordpress/license.txt
 php/wordpress/readme.html
+# Global patterns
+**/vendor/
+**/node_modules/
+**/.env
+
+# Ignore other large installs
+php/fail2/wordpress/
+laravel/day1/vendor/
+laravel/day2/vendor/
+laravel/day3/vendor/
