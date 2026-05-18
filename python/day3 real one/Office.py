@@ -64,15 +64,7 @@ class Office:
     def change_emps_num(cls, num):
         cls.employeesNum += num
 
-    # export/import office
+    # export office
     def export(self):
         with open(f"{self.name}.json", "w") as file:
             json.dump(self.__dict__, file, default=lambda o: o.__dict__, indent=3)
-
-    @classmethod
-    def import_office(cls, filename):
-        with open(filename, "r") as file:
-            data = json.load(file)
-            office = cls(data["name"])
-            office.employees = [Employee(**emp) for emp in data["employees"]]
-            return office

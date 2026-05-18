@@ -27,6 +27,3 @@ if __name__ == "__main__":
     # Export the ITI office data to a json file
     iti_office.export()
 
-    # import test
-    minia_office = Office.import_office("ITI Smart Village.json")
-    print(f"Minia Office Name: {minia_office.name}")
