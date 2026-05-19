@@ -4,8 +4,19 @@ import { Box, TextField, Button, Grid, Card, CardMedia, CardContent, Typography,
 import SearchIcon from '@mui/icons-material/Search';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from '@mui/material/IconButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleFavorite } from '../store/favoritesSlice';
+import { fetchApiData } from '../store/apiThunks';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 export default function Movies() {
+  const favorites = useSelector(state => state.favorites.movies);
+  const dispatch = useDispatch();
+  const { language } = useContext(LanguageContext);
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,14 +24,14 @@ export default function Movies() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        let url = `https://api.themoviedb.org/3/discover/movie?api_key=442f3673d5061a81a97b9aaa3d244a01&with_genres=10751,16&page=${page}`;
+        let url = `/discover/movie?with_genres=10751,16&page=${page}&language=${language}`;
         
         if (searchQuery) {
-          url = `https://api.themoviedb.org/3/search/movie?api_key=442f3673d5061a81a97b9aaa3d244a01&query=${searchQuery}&page=${page}`;
+          url = `/search/movie?query=${searchQuery}&page=${page}&language=${language}`;
         }
 
-        const response = await fetch(url);
-        const data = await response.json();
+        // Dispatch the Thunk
+        const data = await dispatch(fetchApiData(url));
         
         if (data.results) {
           if (searchQuery) {
@@ -37,7 +48,7 @@ export default function Movies() {
     };
     
     fetchMovies();
-  }, [page, searchQuery]);
+  }, [page, searchQuery, language]);
 
   return (
     <Box p={4} style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -82,46 +93,62 @@ export default function Movies() {
         {movies.length > 0 ? movies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id} style={{ display: 'flex', justifyContent: 'center' }}>
             <Card 
-              component={Link} 
-              to={`/movie/${movie.id}`} 
               style={{ 
-                textDecoration: 'none', 
                 display: 'flex', 
                 flexDirection: 'column',
                 minWidth: 260,
                 maxWidth: 260,
                 height: 450,
-                borderRadius: 16
+                borderRadius: 16,
+                position: 'relative'
               }}
             >
-              {movie.poster_path && (
-                <CardMedia
-                  component="img"
-                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  style={{ 
-                    height: 380, 
-                    width: '100%',
-                    objectFit: 'cover' 
-                  }}
-                />
-              )}
-              <CardContent style={{ flexGrow: 1, padding: '16px', overflow: 'hidden' }}>
-                <Typography 
-                  variant="h6" 
-                  color="textPrimary" 
-                  align="center" 
-                  style={{ 
-                    fontWeight: 'bold',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    width: '100%'
-                  }}
-                >
-                  {movie.title}
-                </Typography>
-              </CardContent>
+              <IconButton 
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(toggleFavorite(movie));
+                }}
+                sx={{ 
+                  position: 'absolute', 
+                  top: 8, 
+                  right: 8, 
+                  backgroundColor: 'rgba(255,255,255,0.7)', 
+                  '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
+                  zIndex: 2
+                }}
+              >
+                {favorites.find(fav => fav.id === movie.id) ? (
+                  <FavoriteIcon color="error" />
+                ) : (
+                  <FavoriteBorderIcon color="action" />
+                )}
+              </IconButton>
+              <Link to={`/movie/${movie.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                {movie.poster_path && (
+                  <CardMedia
+                    component="img"
+                    image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                    style={{ height: 380, width: '100%', objectFit: 'cover' }}
+                  />
+                )}
+                <CardContent style={{ flexGrow: 1, padding: '16px', overflow: 'hidden' }}>
+                  <Typography 
+                    variant="h6" 
+                    color="textPrimary" 
+                    align="center" 
+                    style={{ 
+                      fontWeight: 'bold',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      width: '100%'
+                    }}
+                  >
+                    {movie.title}
+                  </Typography>
+                </CardContent>
+              </Link>
             </Card>
           </Grid>
         )) : (

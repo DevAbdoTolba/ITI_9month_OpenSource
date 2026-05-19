@@ -6,8 +6,16 @@ import LoginIcon from '@mui/icons-material/Login';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import MovieIcon from '@mui/icons-material/Movie';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LanguageIcon from '@mui/icons-material/Language';
+import Badge from '@mui/material/Badge';
+import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 export default function Navbar() {
+  const favoritesCount = useSelector(state => state.favorites.movies.length);
+  const { language, toggleLanguage } = useContext(LanguageContext);
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1e1e1e', boxShadow: 'none' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -26,6 +34,15 @@ export default function Navbar() {
           </Button>
           <Button component={Link} to="/movies" color="inherit" startIcon={<MovieIcon />} sx={{ textTransform: 'none' }}>
             Movies
+          </Button>
+          <Button component={Link} to="/favorites" color="inherit" sx={{ textTransform: 'none' }}>
+            <Badge badgeContent={favoritesCount} color="error" sx={{ mr: 1 }}>
+              <FavoriteIcon />
+            </Badge>
+            Favorites
+          </Button>
+          <Button color="inherit" onClick={toggleLanguage} startIcon={<LanguageIcon />} sx={{ textTransform: 'none', ml: 2 }}>
+            {language === 'en-US' ? 'AR' : 'EN'}
           </Button>
         </Box>
       </Toolbar>

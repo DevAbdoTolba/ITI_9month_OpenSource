@@ -5,23 +5,35 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import IconButton from '@mui/material/IconButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleFavorite } from '../store/favoritesSlice';
+import { fetchApiData } from '../store/apiThunks';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 export default function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  
+  const favorites = useSelector(state => state.favorites.movies);
+  const dispatch = useDispatch();
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=442f3673d5061a81a97b9aaa3d244a01`);
-        const data = await response.json();
+        // Dispatch the Thunk
+        const data = await dispatch(fetchApiData(`/movie/${id}?language=${language}`));
         setMovie(data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchMovieDetails();
-  }, [id]);
+  }, [id, language]);
 
   if (!movie) return null;
 
@@ -52,9 +64,21 @@ export default function MovieDetails() {
         )}
         
         <Box p={4} display="flex" flexDirection="column" gap={2} flexGrow={1}>
-          <Typography variant="h3" fontWeight="bold">
-            {movie.title} {releaseYear && <span style={{ color: '#666', fontWeight: 'normal' }}>({releaseYear})</span>}
-          </Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+            <Typography variant="h3" fontWeight="bold">
+              {movie.title} {releaseYear && <span style={{ color: '#666', fontWeight: 'normal' }}>({releaseYear})</span>}
+            </Typography>
+            <IconButton 
+              onClick={() => dispatch(toggleFavorite(movie))}
+              sx={{ ml: 2 }}
+            >
+              {favorites.find(fav => fav.id === movie.id) ? (
+                <FavoriteIcon color="error" fontSize="large" />
+              ) : (
+                <FavoriteBorderIcon color="action" fontSize="large" />
+              )}
+            </IconButton>
+          </Box>
 
           {movie.tagline && (
             <Typography variant="h6" color="textSecondary" fontStyle="italic">
