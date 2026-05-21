@@ -1,0 +1,20 @@
+{% extends 'udempy/base.html' %}
+{% block title %}Confirm delete{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card border-danger shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title text-danger">Delete</h4>
+        <p class="mb-4">Are you sure you want to delete <strong>{{ object }}</strong>? This can't be undone.</p>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Yes, delete</button>
+          <a href="{% url list_url %}" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>{{ title }}</title></head>
+<body>
+  <h1>{{ title }}</h1>
+
+  <!-- POST because we're changing data. csrf_token is required by Django. -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}            {# renders every field as a <p> #}
+    <button type="submit">Save</button>
+    <a href="{% url 'teacher_list' %}">Cancel</a>
+  </form>
+</body>
+</html>
