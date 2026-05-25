@@ -1,0 +1,217 @@
+<odoo>
+  <data>
+
+
+    <record id="action_hms_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hms.patient</field>
+    </record>
+    
+    <record id="action_hms_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hms.doctor</field>
+    </record>
+
+    <record id="action_hms_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">hms.department</field>
+    </record>
+
+    <record id="action_hms_patient_log" model="ir.actions.act_window">
+        <field name="name">Patient Logs</field>
+        <field name="res_model">hms.patient.log</field>
+    </record>
+
+    <menuitem id="menu_hms_root" name="HMSS"/>
+
+
+    <!-- patient -->
+    <menuitem id="menu_hms_patient_category" name="Patients" parent="menu_hms_root"/>
+
+    <menuitem id="menu_hms_patient_action" 
+              name="All Patients" 
+              parent="menu_hms_patient_category" 
+              action="action_hms_patient"/>
+
+    <menuitem id="menu_hms_patient_log_action" 
+              name="Patient Logs" 
+              parent="menu_hms_patient_category" 
+              action="action_hms_patient_log"/>
+    
+    <!-- doctor -->
+
+    <menuitem id="menu_hms_doctor_category" name="Doctors" parent="menu_hms_root"/>
+
+    <menuitem id="menu_hms_doctor_action" 
+              name="All Doctors" 
+              parent="menu_hms_doctor_category" 
+              action="action_hms_doctor"/>
+
+
+    <!-- department -->
+
+    <menuitem id="menu_hms_department_category" name="Departments" parent="menu_hms_root"/>
+
+    <menuitem id="menu_hms_department_action" 
+              name="All Departments" 
+              parent="menu_hms_department_category" 
+              action="action_hms_department"/>
+
+    <!-- Patient Form View -->
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">Patient Form</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="age"/>
+                        <field name="birth_date"/>
+                        <field name="blood_type"/>
+                        <field name="address"/>
+                    </group>
+                    <group>
+                        <field name="department_id"/>
+                        <field name="doctor_ids" widget="many2many_tags" attrs="{'readonly': [('department_id', '=', False)]}"/>
+                        <field name="department_capacity"/>
+                    </group>
+                    <group>
+                        <field name="state"/>
+                        <field name="pcr"/>
+                        <field name="cr_ratio" attrs="{'required': [('pcr', '=', True)]}"/>
+                        <field name="image" widget="image" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="History">
+                            <field name="history" attrs="{'invisible': [('age', '<', 50)]}"/>
+                        </page>
+                        <page string="Log History">
+                            <field name="log_ids" readonly="1">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="created_by"/>
+                                    <field name="old_state"/>
+                                    <field name="new_state"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Patient List View -->
+    <record id="view_patient_list" model="ir.ui.view">
+        <field name="name">Patient List</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="age"/>
+                <field name="department_id"/>
+                <field name="state"/>
+                <field name="pcr"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Patient Log View -->
+    <record id="view_patient_log_form" model="ir.ui.view">
+        <field name="name">Patient Log Form</field>
+        <field name="model">hms.patient.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="created_by"/>
+                        <field name="date"/>
+                        <field name="old_state"/>
+                        <field name="new_state"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Patient Log List View -->
+    <record id="view_patient_log_list" model="ir.ui.view">
+        <field name="name">Patient Log List</field>
+        <field name="model">hms.patient.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="created_by"/>
+                <field name="old_state"/>
+                <field name="new_state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="hms.list">
+      <field name="name">hms list</field>
+      <field name="model">hms.hms</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="hms.action_window">
+      <field name="name">hms window</field>
+      <field name="res_model">hms.hms</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="hms.action_server">
+      <field name="name">hms server</field>
+      <field name="model_id" ref="model_hms_hms"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="hms" id="hms.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="hms.menu_1" parent="hms.menu_root"/>
+    <menuitem name="Menu 2" id="hms.menu_2" parent="hms.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="hms.menu_1_list" parent="hms.menu_1"
+              action="hms.action_window"/>
+    <menuitem name="Server to list" id="hms" parent="hms.menu_2"
+              action="hms.action_server"/>
+-->
+  </data>
+</odoo>
