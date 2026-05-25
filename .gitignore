@@ -33,3 +33,13 @@ php/fail2/wordpress/
 laravel/day1/vendor/
 laravel/day2/vendor/
 laravel/day3/vendor/
+
+
+
+
+
+# odoo: only track custom_addons + odoo.conf. Re-clone Odoo per odoo/README.md
+odoo/Day*/*
+!odoo/Day*/custom_addons/
+!odoo/Day*/odoo.conf
+odoo/Day*/custom_addons/**/__pycache__/
