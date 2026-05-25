@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_patient_status" model="ir.actions.report">
+        <field name="name">Patient Status Report</field>
+        <field name="model">hms.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hmss.report_patient_status_document</field>
+        <field name="report_file">hmss.report_patient_status_document</field>
+        <field name="binding_model_id" ref="model_hms_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_patient_status_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="patient">
+                <div style="font-family: Arial, sans-serif; margin: 20px;">
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <h2>Patient Status Report</h2>
+                            </td>
+                            <td align="right">
+                                <img t-if="patient.image"
+                                     t-att-src="image_data_uri(patient.image)"
+                                     width="80" height="80"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellpadding="5">
+                        <tr>
+                            <td><b>Name:</b> <span t-esc="patient.first_name"/> <span t-esc="patient.last_name"/></td>
+                            <td><b>Birth date:</b> <span t-field="patient.birth_date"/></td>
+                        </tr>
+                        <tr>
+                            <td><b>Age:</b> <span t-esc="patient.age"/></td>
+                            <td><b>PCR:</b> <span t-esc="'Yes' if patient.pcr else 'No'"/></td>
+                        </tr>
+                        <tr>
+                            <td><b>Department:</b> <span t-esc="patient.department_id.name or ''"/></td>
+                            <td><b>Blood Type:</b> <span t-esc="patient.blood_type or ''"/></td>
+                        </tr>
+                        <tr>
+                            <td><b>Doctors:</b>
+                                <span t-esc="', '.join((d.first_name or '') + ' ' + (d.last_name or '') for d in patient.doctor_ids)"/>
+                            </td>
+                            <td><b>Email:</b> <span t-esc="patient.email"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Log History</h3>
+                    <table width="100%" border="1" cellpadding="5">
+                        <tr>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Info</th>
+                        </tr>
+                        <tr t-foreach="patient.log_ids" t-as="log">
+                            <td><span t-esc="log.created_by.name"/></td>
+                            <td><span t-field="log.date"/></td>
+                            <td><span t-esc="log.description or ''"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

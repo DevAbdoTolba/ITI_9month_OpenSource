@@ -17,11 +17,13 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale', 'crm'],
+    'depends': ['base', 'web', 'sale', 'crm'],
 
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'views/views.xml',
+        'report/patient_status_report.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
