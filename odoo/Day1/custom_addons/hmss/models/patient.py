@@ -1,5 +1,7 @@
 from odoo import models, fields, api
-from datetime import datetime
+from odoo.exceptions import ValidationError
+from odoo.tools import email_re
+from datetime import date
 
 class HmsPatient(models.Model):
     _name = 'hms.patient'
@@ -7,7 +9,7 @@ class HmsPatient(models.Model):
 
     first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
-    email = fields.Char(string='Email', required=True, unique=True)
+    email = fields.Char(string='Email', required=True)
     birth_date = fields.Date(string='Birth Date')
     history = fields.Html(string='History')
     cr_ratio = fields.Float(string='CR Ratio')
@@ -22,7 +24,7 @@ class HmsPatient(models.Model):
     pcr = fields.Boolean(string='PCR')
     image = fields.Image(string='Image')
     address = fields.Text(string='Address')
-    age = fields.Integer(string='Age', compute='_compute_age')
+    age = fields.Integer(string='Age', compute='_compute_age', store=True)
     
     state = fields.Selection([
         ('undetermined', 'Undetermined'),
@@ -47,55 +49,66 @@ class HmsPatient(models.Model):
     )
     
     log_ids = fields.One2many('hms.patient.log', 'patient_id', string='History Log')
-    
+
+    _sql_constraints = [
+        ('email_unique', 'unique(email)', 'Patient email must be unique.')
+    ]
+
     @api.depends('birth_date')
     def _compute_age(self):
         for record in self:
             if record.birth_date:
-                today = datetime.today().date()
+                today = date.today()
                 record.age = (today - record.birth_date).days // 365
             else:
                 record.age = 0
-    
-    @api.onchange('age')
-    def _onchange_age(self):
-        if self.age and self.age < 30:
-            self.pcr = True
-        if self.age and self.age < 30:
-            self.pcr = True
-    
+
+    @api.onchange('birth_date')
+    def _onchange_birth_date(self):
+        if self.birth_date:
+            today = date.today()
+            age = (today - self.birth_date).days // 365
+            if age < 30:
+                self.pcr = True
+                return {
+                    'warning': {
+                        'title': 'PCR Auto-Checked',
+                        'message': 'Patient younger than 30 automatically has PCR checked.'
+                    }
+                }
+
     @api.onchange('pcr')
     def _onchange_pcr(self):
         if self.pcr and not self.cr_ratio:
             return {'warning': {'title': 'PCR Selected', 'message': 'Please fill CR Ratio'}}
-    
-    @api.onchange('birth_date')
-    def _onchange_birth_date(self):
-        if self.birth_date:
-            today = datetime.today().date()
-            age = (today - self.birth_date).days // 365
-            if age < 30:
-                self.pcr = True
-    
+
     @api.constrains('email')
-    def _check_email_unique(self):
+    def _check_email(self):
         for record in self:
-            existing = self.search([('email', '=', record.email), ('id', '!=', record.id)])
-            if existing:
-                raise ValueError(f"Email {record.email} already exists!")
-    
-    @api.onchange('state')
-    def _onchange_state(self):
-        if self.id:  # Only for existing records
-            old_state = self.env['hms.patient'].browse(self.id).state
-            if old_state != self.state:
-                self.env['hms.patient.log'].create({
-                    'patient_id': self.id,
-                    'old_state': old_state,
-                    'new_state': self.state,
-                    'description': f'State changed to {self.state}'
-                })
-    
+            if record.email and not email_re.match(record.email):
+                raise ValidationError('Please enter a valid email address.')
+
+    @api.constrains('pcr', 'cr_ratio')
+    def _check_cr_when_pcr(self):
+        for record in self:
+            if record.pcr and not record.cr_ratio:
+                raise ValidationError('CR Ratio is required when PCR is checked.')
+
+    def write(self, vals):
+        old_states = {record.id: record.state for record in self}
+        res = super().write(vals)
+        if 'state' in vals:
+            for record in self:
+                old_state = old_states.get(record.id)
+                if old_state and old_state != record.state:
+                    self.env['hms.patient.log'].create({
+                        'patient_id': record.id,
+                        'old_state': old_state,
+                        'new_state': record.state,
+                        'description': f'State changed to {record.state}'
+                    })
+        return res
+
     @api.onchange('department_id')
     def _onchange_department(self):
         if self.department_id:

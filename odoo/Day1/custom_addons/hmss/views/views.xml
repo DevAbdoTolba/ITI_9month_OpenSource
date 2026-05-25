@@ -5,21 +5,25 @@
     <record id="action_hms_patient" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="res_model">hms.patient</field>
+        <field name="view_mode">tree,form</field>
     </record>
     
     <record id="action_hms_doctor" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="res_model">hms.doctor</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <record id="action_hms_department" model="ir.actions.act_window">
         <field name="name">Departments</field>
         <field name="res_model">hms.department</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <record id="action_hms_patient_log" model="ir.actions.act_window">
         <field name="name">Patient Logs</field>
         <field name="res_model">hms.patient.log</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_hms_root" name="HMSS"/>
@@ -221,8 +225,10 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='misc']" position="inside">
-                <field name="related_patient_id"/>
+            <xpath expr="//page[contains(@string, 'Sales')]" position="inside">
+                <group>
+                    <field name="related_patient_id"/>
+                </group>
             </xpath>
             <xpath expr="//field[@name='vat']" position="attributes">
                 <attribute name="required">True</attribute>
