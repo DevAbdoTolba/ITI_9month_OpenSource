@@ -67,6 +67,7 @@
                     <group>
                         <field name="first_name"/>
                         <field name="last_name"/>
+                        <field name="email"/>
                         <field name="age"/>
                         <field name="birth_date"/>
                         <field name="blood_type"/>
@@ -213,5 +214,33 @@
     <menuitem name="Server to list" id="hms" parent="hms.menu_2"
               action="hms.action_server"/>
 -->
+
+    <!-- Customer Form View Inherit -->
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">Customer Form Inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='misc']" position="inside">
+                <field name="related_patient_id"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Customer List View Inherit -->
+    <record id="view_partner_list_inherit" model="ir.ui.view">
+        <field name="name">Customer List Inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="website"/>
+            </xpath>
+        </field>
+    </record>
+
   </data>
 </odoo>

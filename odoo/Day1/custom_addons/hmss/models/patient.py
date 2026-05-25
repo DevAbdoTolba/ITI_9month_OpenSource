@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from datetime import datetime
 
 class HmsPatient(models.Model):
     _name = 'hms.patient'
@@ -6,6 +7,7 @@ class HmsPatient(models.Model):
 
     first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
+    email = fields.Char(string='Email', required=True, unique=True)
     birth_date = fields.Date(string='Birth Date')
     history = fields.Html(string='History')
     cr_ratio = fields.Float(string='CR Ratio')
@@ -20,7 +22,7 @@ class HmsPatient(models.Model):
     pcr = fields.Boolean(string='PCR')
     image = fields.Image(string='Image')
     address = fields.Text(string='Address')
-    age = fields.Integer(string='Age')
+    age = fields.Integer(string='Age', compute='_compute_age')
     
     state = fields.Selection([
         ('undetermined', 'Undetermined'),
@@ -46,8 +48,19 @@ class HmsPatient(models.Model):
     
     log_ids = fields.One2many('hms.patient.log', 'patient_id', string='History Log')
     
+    @api.depends('birth_date')
+    def _compute_age(self):
+        for record in self:
+            if record.birth_date:
+                today = datetime.today().date()
+                record.age = (today - record.birth_date).days // 365
+            else:
+                record.age = 0
+    
     @api.onchange('age')
     def _onchange_age(self):
+        if self.age and self.age < 30:
+            self.pcr = True
         if self.age and self.age < 30:
             self.pcr = True
     
@@ -55,6 +68,21 @@ class HmsPatient(models.Model):
     def _onchange_pcr(self):
         if self.pcr and not self.cr_ratio:
             return {'warning': {'title': 'PCR Selected', 'message': 'Please fill CR Ratio'}}
+    
+    @api.onchange('birth_date')
+    def _onchange_birth_date(self):
+        if self.birth_date:
+            today = datetime.today().date()
+            age = (today - self.birth_date).days // 365
+            if age < 30:
+                self.pcr = True
+    
+    @api.constrains('email')
+    def _check_email_unique(self):
+        for record in self:
+            existing = self.search([('email', '=', record.email), ('id', '!=', record.id)])
+            if existing:
+                raise ValueError(f"Email {record.email} already exists!")
     
     @api.onchange('state')
     def _onchange_state(self):
