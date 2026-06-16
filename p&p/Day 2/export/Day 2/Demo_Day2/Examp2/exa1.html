@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a simple HTML document.</p>
+    <button id="sendButton">Send</button>
+    <script>
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.onopen = function(event) {
+            console.log('WebSocket connection established.');
+        };
+
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const message = 'Hello Server!';
+            socket.send(message); // from client to server
+        });
+
+        socket.onmessage = function(event) {
+            console.log(`Received message from server: ${event.data}`); // from server to client
+        };
+    </script>
+</body>
+</html>
+    
+
+
+    </script>
+</body>
+</html>

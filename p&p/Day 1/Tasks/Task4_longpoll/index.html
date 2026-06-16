@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Long Poll</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        let lasttime = 0;
+        function longPoll(){
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', '/data?time=' + lasttime);
+            xhr.send();
+            xhr.onload = function(){
+                let response = JSON.parse(xhr.responseText);
+                lasttime = response.time;
+                document.querySelector('div').innerText = response.data;
+                longPoll();
+            }
+        }
+        longPoll();
+    </script>
+</body>
+</html>
